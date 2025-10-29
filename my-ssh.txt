@@ -1,104 +1,407 @@
-root@srv998476:/opt# ls
-iotdemo  powerbank
-root@srv998476:/opt# whereis nginx
-nginx: /usr/sbin/nginx /etc/nginx /usr/share/nginx /usr/share/man/man8/nginx.8.gz
-root@srv998476:/opt# ls /etc/nginx/sites-available/
-api.chargeghar.com  default  main.chargeghar.com 
-root@srv998476:/opt# ls
-iotdemo  powerbank
-root@srv998476:/opt# 
+root@srv998476:/opt/tools# git stash
+Saved working directory and index state WIP on main: 3175320 First commmit
+root@srv998476:/opt/tools# git pull origin main
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 6 (delta 3), reused 6 (delta 3), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 541 bytes | 180.00 KiB/s, done.
+From https://github.com/itzmejanak/Device-related-tools
+ * branch            main       -> FETCH_HEAD
+   3175320..0bdb57b  main       -> origin/main
+Updating 3175320..0bdb57b
+Fast-forward
+ web-cabinet-bind/Dockerfile   | 4 +++-
+ web-cabinet-bind/img/.gitkeep | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 web-cabinet-bind/img/.gitkeep
+root@srv998476:/opt/tools# ./deploy.sh
+🚀 Power Bank Sharing System - Smart Deployment
+==============================================
+ℹ️  Detecting deployment environment...
+✅ Production server detected (srv998476)
+ℹ️  Switching to production environment...
+ℹ️  Switching to PRODUCTION environment...
+✅ Switched to production environment
+⚠️  Please verify production credentials in .env file
+ℹ️  Configuration:
+  • Backend: https://powerbank-api.chargeghar.com
+  • Cabinet Bind: https://cabinet.chargeghar.com
+  • Test Tool: https://test.chargeghar.com
+  • MySQL Port: 3307 (to avoid conflicts)
+  • Redis Port: 6380 (to avoid conflicts)
 
+ℹ️  Environment switched successfully!
+ℹ️  Next steps:
+  1. Review .env file configuration
+  2. Run: ./build.sh && ./start.sh
+ℹ️  Starting production deployment...
+🚀 Power Bank Sharing System - Production Deployment
+==================================================
 
-root@srv998476:/opt# ls
-iotdemo  powerbank
-root@srv998476:/opt# whereis nginx
-nginx: /usr/sbin/nginx /etc/nginx /usr/share/nginx /usr/share/man/man8/nginx.8.gz
-root@srv998476:/opt# ls /etc/nginx/sites-available/
-api.chargeghar.com  default  main.chargeghar.com
-root@srv998476:/opt# ls
-iotdemo  powerbank
-root@srv998476:/opt# docker ps
-CONTAINER ID   IMAGE                                   COMMAND                  CREATED        STATUS                  PORTS                                                                  NAMES
-3865ae16ed1b   iotdemo-app                             "catalina.sh run"        3 hours ago    Up 3 hours (healthy)    0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp                            iotdemo-app-prod
-293683d48df8   mysql:8.0                               "docker-entrypoint.s…"   3 hours ago    Up 3 hours (healthy)    0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp                 iotdemo-mysql-prod
-edc6c33c4bb8   redis:7.2-alpine                        "docker-entrypoint.s…"   3 hours ago    Up 3 hours (healthy)    0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp                            iotdemo-redis-prod
-ed8de9fce526   powerbank_production-powerbank_celery   "python -m celery -A…"   28 hours ago   Up 28 hours             80/tcp                                                                 powerbank_production-powerbank_celery-1
-b80c51253731   powerbank_production-powerbank_api      "sh -c 'python manag…"   28 hours ago   Up 28 hours (healthy)   0.0.0.0:8010->80/tcp, [::]:8010->80/tcp                                powerbank_production-powerbank_api-1
-e10879f43505   rabbitmq:3.13-management-alpine         "docker-entrypoint.s…"   28 hours ago   Up 28 hours (healthy)   4369/tcp, 5671-5672/tcp, 15671-15672/tcp, 15691-15692/tcp, 25672/tcp   powerbank_production-powerbank_rabbitmq-1
-96708a2fbff8   postgres:15                             "docker-entrypoint.s…"   28 hours ago   Up 28 hours (healthy)   5432/tcp                                                               powerbank_production-powerbank_db-1
-a9e30c371b98   redis:7-alpine                          "docker-entrypoint.s…"   28 hours ago   Up 28 hours (healthy)   6379/tcp                                                               powerbank_production-powerbank_redis-1
-root@srv998476:/opt# 
+📋 Step 1: Environment Verification
+==================================
+✅ Docker is installed
+✅ Docker Compose is installed
+✅ .env file exists
 
+🔍 Step 2: Port Conflict Check
+=============================
+✅ Port 3307 available
+✅ Port 6380 available
+✅ Port 10030 available
+✅ Port 8084 available
+✅ Port 8083 available
+✅ Port 5672 available
+✅ Port 15672 available
 
+🌐 Step 3: Nginx Configuration (Skipped)
+======================================
+ℹ️  Nginx configurations already exist - skipping setup
+ℹ️  Use --setup-nginx flag to force reconfiguration
 
-root@srv998476:/opt# cat /etc/nginx/sites-available/api.chargeghar.com
-server {
-    server_name api.chargeghar.com;
+🔒 Step 4: SSL Certificate Setup (Skipped)
+========================================
+ℹ️  SSL certificates already exist - skipping setup
+ℹ️  Use --setup-ssl flag to force reconfiguration
 
-    location / {
-        proxy_pass http://127.0.0.1:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
+⚙️  Step 5: Environment Verification
+===================================
+✅ Production environment confirmed
 
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/api.chargeghar.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/api.chargeghar.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+🔨 Step 6: Build and Deploy Application
+======================================
+ℹ️  Cleaning up existing deployment...
+ℹ️  Checking for orphaned containers...
+ℹ️  Building Docker images...
+🚀 Building Power Bank Sharing System...
+🔨 Building Docker images...
+[+] Building 184.9s (71/71) FINISHED                                                                                                                                                    
+ => [internal] load local bake definitions                                                                                                                                         0.0s
+ => => reading from stdin 1.92kB                                                                                                                                                   0.0s
+ => [web-test-tool internal] load build definition from Dockerfile                                                                                                                 0.0s
+ => => transferring dockerfile: 2.46kB                                                                                                                                             0.0s
+ => [web-cabinet-bind internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 1.90kB                                                                                                                                             0.0s
+ => [rabbitmq internal] load build definition from Dockerfile                                                                                                                      0.0s
+ => => transferring dockerfile: 619B                                                                                                                                               0.0s
+ => [backend internal] load build definition from Dockerfile                                                                                                                       0.0s
+ => => transferring dockerfile: 2.67kB                                                                                                                                             0.0s
+ => [rabbitmq internal] load metadata for docker.io/library/rabbitmq:3-management-alpine                                                                                           1.7s
+ => [backend internal] load metadata for docker.io/library/openjdk:8-jre-alpine                                                                                                    0.7s
+ => [backend internal] load metadata for docker.io/library/maven:3.8.6-openjdk-8-slim                                                                                              0.7s
+ => [web-test-tool internal] load metadata for docker.io/library/nginx:alpine                                                                                                      0.7s
+ => [web-test-tool internal] load metadata for docker.io/library/node:16-alpine                                                                                                    0.7s
+ => [backend internal] load .dockerignore                                                                                                                                          0.0s
+ => => transferring context: 2B                                                                                                                                                    0.0s
+ => [web-test-tool internal] load .dockerignore                                                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                                                                    0.0s
+ => [web-cabinet-bind internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                                    0.0s
+ => [backend build 1/8] FROM docker.io/library/maven:3.8.6-openjdk-8-slim@sha256:eefc01f3404be359f20e94eb78a28509be9ff0e2cc564b770f7701a6d56fa326                                 11.9s
+ => => resolve docker.io/library/maven:3.8.6-openjdk-8-slim@sha256:eefc01f3404be359f20e94eb78a28509be9ff0e2cc564b770f7701a6d56fa326                                                0.0s
+ => => sha256:3ef47689e25596a487dd82b9e8eea19f22818d01249568b9713cfb06807845f7 8.18kB / 8.18kB                                                                                     0.0s
+ => => sha256:1efc276f4ff952c055dea726cfc96ec6a4fdb8b62d9eed816bd2b788f2860ad7 31.37MB / 31.37MB                                                                                   1.5s
+ => => sha256:a2f2f93da48276873890ac821b3c991d53a7e864791aaf82c39b7863c908b93b 1.58MB / 1.58MB                                                                                     1.2s
+ => => sha256:1a2de4cc94315f2ba5015e6781672aa8e0b1456a4d488694bb5f016d8f59fa70 210B / 210B                                                                                         0.8s
+ => => sha256:eefc01f3404be359f20e94eb78a28509be9ff0e2cc564b770f7701a6d56fa326 549B / 549B                                                                                         0.0s
+ => => sha256:e0bffb105d66d613524b4ca29dcfde3a704c2d76ea388e5c2de02af232b8260c 2.00kB / 2.00kB                                                                                     0.0s
+ => => sha256:9013b84ebbe7aec8b587e257266770d2ac6ec3fce4c27415e74fbaf5928b4549 106.19MB / 106.19MB                                                                                 5.2s
+ => => sha256:270432a98c01dab3ba8c9b3bfbd96a0ef249becc23afac0b55e57d7fc960cdde 2.46MB / 2.46MB                                                                                     2.0s
+ => => sha256:1bf55df0a08223fb37936935a6932d8b224a61f062d2888ef40849ab1a2b9e7a 8.74MB / 8.74MB                                                                                     2.6s
+ => => extracting sha256:1efc276f4ff952c055dea726cfc96ec6a4fdb8b62d9eed816bd2b788f2860ad7                                                                                          6.5s
+ => => sha256:cc4ebac1be1c3ad213216dafd094d55284c77e7b5c720c089f99520e6c54cad7 855B / 855B                                                                                         2.6s
+ => => sha256:dad2b40b37ac4e36bb9baa8ecb235040a9ead38aea4fd43a06d292f761aaaf2d 360B / 360B                                                                                         3.3s
+ => => extracting sha256:a2f2f93da48276873890ac821b3c991d53a7e864791aaf82c39b7863c908b93b                                                                                          0.3s
+ => => extracting sha256:1a2de4cc94315f2ba5015e6781672aa8e0b1456a4d488694bb5f016d8f59fa70                                                                                          0.0s
+ => => extracting sha256:9013b84ebbe7aec8b587e257266770d2ac6ec3fce4c27415e74fbaf5928b4549                                                                                          2.6s
+ => => extracting sha256:270432a98c01dab3ba8c9b3bfbd96a0ef249becc23afac0b55e57d7fc960cdde                                                                                          0.1s
+ => => extracting sha256:1bf55df0a08223fb37936935a6932d8b224a61f062d2888ef40849ab1a2b9e7a                                                                                          0.1s
+ => => extracting sha256:cc4ebac1be1c3ad213216dafd094d55284c77e7b5c720c089f99520e6c54cad7                                                                                          0.0s
+ => => extracting sha256:dad2b40b37ac4e36bb9baa8ecb235040a9ead38aea4fd43a06d292f761aaaf2d                                                                                          0.0s
+ => [backend stage-1 1/8] FROM docker.io/library/openjdk:8-jre-alpine@sha256:f362b165b870ef129cbe730f29065ff37399c0aa8bcab3e44b51c302938c9193                                      9.3s
+ => => resolve docker.io/library/openjdk:8-jre-alpine@sha256:f362b165b870ef129cbe730f29065ff37399c0aa8bcab3e44b51c302938c9193                                                      0.0s
+ => => sha256:f362b165b870ef129cbe730f29065ff37399c0aa8bcab3e44b51c302938c9193 1.64kB / 1.64kB                                                                                     0.0s
+ => => sha256:b2ad93b079b1495488cc01375de799c402d45086015a120c105ea00e1be0fd52 947B / 947B                                                                                         0.0s
+ => => sha256:f7a292bbb70c4ce57f7704cc03eb09e299de9da19013b084f138154421918cb4 3.42kB / 3.42kB                                                                                     0.0s
+ => => sha256:e7c96db7181be991f19a9fb6975cdbbd73c65f4a2681348e63a141a2192a5f10 2.76MB / 2.76MB                                                                                     3.4s
+ => => sha256:f910a506b6cb1dbec766725d70356f695ae2bf2bea6224dbe8c7c6ad4f3664a2 238B / 238B                                                                                         3.9s
+ => => extracting sha256:e7c96db7181be991f19a9fb6975cdbbd73c65f4a2681348e63a141a2192a5f10                                                                                          0.3s
+ => => sha256:b6abafe80f63b02535fc111df2ed6b3c728469679ab654e03e482b6f347c9639 54.94MB / 54.94MB                                                                                   5.9s
+ => => extracting sha256:f910a506b6cb1dbec766725d70356f695ae2bf2bea6224dbe8c7c6ad4f3664a2                                                                                          0.0s
+ => => extracting sha256:b6abafe80f63b02535fc111df2ed6b3c728469679ab654e03e482b6f347c9639                                                                                          3.0s
+ => [backend internal] load build context                                                                                                                                          0.0s
+ => => transferring context: 12.95kB                                                                                                                                               0.0s
+ => [web-test-tool build 1/7] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787                                       11.1s
+ => => resolve docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787                                                            0.0s
+ => => sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787 1.43kB / 1.43kB                                                                                     0.0s
+ => => sha256:72e89a86be58c922ed7b1475e5e6f151537676470695dd106521738b060e139d 1.16kB / 1.16kB                                                                                     0.0s
+ => => sha256:2573171e0124bb95d14d128728a52a97bb917ef45d7c4fa8cfe76bc44aa78b73 6.73kB / 6.73kB                                                                                     0.0s
+ => => sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 3.40MB / 3.40MB                                                                                     4.7s
+ => => extracting sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de                                                                                          0.3s
+ => => sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 36.63MB / 36.63MB                                                                                   6.2s
+ => => sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 2.34MB / 2.34MB                                                                                     6.0s
+ => => sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 452B / 452B                                                                                         6.5s
+ => => extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9                                                                                          4.3s
+ => => extracting sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2                                                                                          0.2s
+ => => extracting sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9                                                                                          0.0s
+ => [web-test-tool internal] load build context                                                                                                                                    0.0s
+ => => transferring context: 2.72kB                                                                                                                                                0.0s
+ => [web-test-tool stage-1  1/10] FROM docker.io/library/nginx:alpine@sha256:9dacca6749f2215cc3094f641c5b6662f7791e66a57ed034e806a7c48d51c18f                                      9.8s
+ => => resolve docker.io/library/nginx:alpine@sha256:9dacca6749f2215cc3094f641c5b6662f7791e66a57ed034e806a7c48d51c18f                                                              0.0s
+ => => sha256:667473807103639a0aca5b49534a216d2b64f0fb868aaa801f023da0cdd781c7 2.50kB / 2.50kB                                                                                     0.0s
+ => => sha256:9dacca6749f2215cc3094f641c5b6662f7791e66a57ed034e806a7c48d51c18f 10.33kB / 10.33kB                                                                                   0.0s
+ => => sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9 10.96kB / 10.96kB                                                                                   0.0s
+ => => sha256:8f6a6833e95d43ac524f1f9c5e7c1316c1f3b8e7ae5ba3db4e54b0c5b910e80a 1.84MB / 1.84MB                                                                                     6.7s
+ => => sha256:194fa24e147df0010e146240d3b4bd25d04180c523dc717e4645b269991483e3 628B / 628B                                                                                         6.9s
+ => => sha256:3eaba6cd10a374d9ed629c26d76a5258e20ddfa09fcef511c98aa620dcf3fae4 955B / 955B                                                                                         7.2s
+ => => extracting sha256:8f6a6833e95d43ac524f1f9c5e7c1316c1f3b8e7ae5ba3db4e54b0c5b910e80a                                                                                          0.2s
+ => => sha256:df413d6ebdc834bccf63178455d406c4d25e2c2d38d2c1ab79ee5494b18e5624 403B / 403B                                                                                         7.4s
+ => => sha256:d9a55dab5954588333096b28b351999099bea5eb3c68c10e99f175b12c97198d 1.21kB / 1.21kB                                                                                     7.6s
+ => => sha256:ff8a36d5502a57c3fc8eeff48e578ab433a03b1dd528992ba0d966ddf853309a 1.40kB / 1.40kB                                                                                     7.8s
+ => => extracting sha256:194fa24e147df0010e146240d3b4bd25d04180c523dc717e4645b269991483e3                                                                                          0.0s
+ => => extracting sha256:3eaba6cd10a374d9ed629c26d76a5258e20ddfa09fcef511c98aa620dcf3fae4                                                                                          0.0s
+ => => sha256:bdabb0d442710d667f4fd871b5fd215cc2a430a95b192bc508bf945b8e60999b 16.97MB / 16.97MB                                                                                   8.6s
+ => => extracting sha256:df413d6ebdc834bccf63178455d406c4d25e2c2d38d2c1ab79ee5494b18e5624                                                                                          0.0s
+ => => extracting sha256:d9a55dab5954588333096b28b351999099bea5eb3c68c10e99f175b12c97198d                                                                                          0.0s
+ => => extracting sha256:ff8a36d5502a57c3fc8eeff48e578ab433a03b1dd528992ba0d966ddf853309a                                                                                          0.0s
+ => => extracting sha256:bdabb0d442710d667f4fd871b5fd215cc2a430a95b192bc508bf945b8e60999b                                                                                          0.9s
+ => [web-cabinet-bind internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 818B                                                                                                                                                  0.0s
+ => [rabbitmq internal] load .dockerignore                                                                                                                                         0.0s
+ => => transferring context: 2B                                                                                                                                                    0.0s
+ => CACHED [rabbitmq 1/4] FROM docker.io/library/rabbitmq:3-management-alpine@sha256:dbeb09916cb6b54176c2fe0ec8b44fc6eab71990d60b20be3ab6422077467739                              0.0s
+ => [rabbitmq 2/4] RUN apk add --no-cache wget                                                                                                                                     3.1s
+ => [rabbitmq 3/4] RUN wget -O /opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-3.13.0.ez     https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/downl  0.8s
+ => [rabbitmq 4/4] RUN rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange                                                                                         4.5s
+ => [backend stage-1 2/8] RUN apk add --no-cache curl tzdata                                                                                                                       1.2s
+ => [rabbitmq] exporting to image                                                                                                                                                  0.1s
+ => => exporting layers                                                                                                                                                            0.1s
+ => => writing image sha256:9b0179e98e786e3fdc923fc377c3eb87ad824aefb6e2052753630bc7f83d0557                                                                                       0.0s
+ => => naming to docker.io/library/tools-rabbitmq                                                                                                                                  0.0s
+ => [rabbitmq] resolving provenance for metadata file                                                                                                                              0.0s
+ => [web-cabinet-bind stage-1  2/10] RUN apk add --no-cache gettext                                                                                                                1.9s
+ => [backend stage-1 3/8] RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo Asia/Shanghai > /etc/timezone                                                       0.5s
+ => [backend stage-1 4/8] RUN addgroup -g 1001 -S appgroup &&     adduser -u 1001 -S appuser -G appgroup                                                                           0.3s
+ => [web-test-tool build 2/7] WORKDIR /app                                                                                                                                         0.0s
+ => [web-test-tool build 3/7] COPY package*.json ./                                                                                                                                0.0s
+ => [web-test-tool build 4/7] RUN npm config set registry https://registry.npmjs.org/ &&     npm cache clean --force &&     npm install --verbose                                142.5s
+ => [backend stage-1 5/8] WORKDIR /app                                                                                                                                             0.0s
+ => [backend stage-1 6/8] RUN mkdir -p /app/logs &&     chown -R appuser:appgroup /app                                                                                             0.3s
+ => [web-test-tool stage-1  3/10] RUN addgroup -g 1001 -S appgroup &&     adduser -u 1001 -S appuser -G appgroup                                                                   0.3s
+ => [backend build 2/8] WORKDIR /app                                                                                                                                               0.0s
+ => [backend build 3/8] COPY pom.xml .                                                                                                                                             0.0s
+ => [backend build 4/8] COPY utils-common/pom.xml ./utils-common/                                                                                                                  0.0s
+ => [web-test-tool stage-1  4/10] WORKDIR /usr/share/nginx/html                                                                                                                    0.0s
+ => [web-test-tool stage-1  5/10] RUN rm -rf /usr/share/nginx/html/*                                                                                                               0.2s
+ => [backend build 5/8] COPY brezze-communication/pom.xml ./brezze-communication/                                                                                                  0.0s
+ => [backend build 6/8] COPY utils-common/src ./utils-common/src                                                                                                                   0.1s
+ => [backend build 7/8] COPY brezze-communication/src ./brezze-communication/src                                                                                                   0.0s
+ => [backend build 8/8] RUN mvn clean package -DskipTests -B                                                                                                                     164.5s
+ => [web-cabinet-bind  6/14] COPY cabinet.html index.html                                                                                                                          0.0s
+ => [web-cabinet-bind  7/14] COPY css/ ./css/                                                                                                                                      0.0s
+ => [web-cabinet-bind  8/14] COPY js/ ./js/                                                                                                                                        0.0s
+ => [web-cabinet-bind  9/14] COPY layer/ ./layer/                                                                                                                                  0.0s
+ => [web-cabinet-bind 10/14] RUN mkdir -p ./img/                                                                                                                                   0.2s
+ => [web-cabinet-bind 11/14] COPY config.template.js ./config.template.js                                                                                                          0.0s
+ => [web-cabinet-bind 12/14] COPY nginx.conf /etc/nginx/nginx.conf                                                                                                                 0.0s
+ => [web-cabinet-bind 13/14] RUN echo '#!/bin/sh' > /docker-entrypoint.sh &&     echo 'envsubst < /usr/share/nginx/html/config.template.js > /usr/share/nginx/html/config.js' >>   0.2s
+ => [web-cabinet-bind 14/14] RUN chown -R appuser:appgroup /usr/share/nginx/html &&     chown -R appuser:appgroup /var/cache/nginx &&     chown -R appuser:appgroup /var/log/ngin  0.4s
+ => [web-cabinet-bind] exporting to image                                                                                                                                          0.3s
+ => => exporting layers                                                                                                                                                            0.2s
+ => => writing image sha256:3d54eb1fd54dff728f6654d24c7f9363264ef84b9e336222b6c62880984f6337                                                                                       0.0s
+ => => naming to docker.io/library/tools-web-cabinet-bind                                                                                                                          0.0s
+ => [web-cabinet-bind] resolving provenance for metadata file                                                                                                                      0.0s
+ => [web-test-tool build 5/7] COPY . .                                                                                                                                             0.1s
+ => [web-test-tool build 6/7] RUN echo "BASE_URL=http://backend:10030" > .env.docker                                                                                               0.2s
+ => [web-test-tool build 7/7] RUN npm run generate:docker                                                                                                                         27.2s
+ => [backend stage-1 7/8] COPY --from=build /app/brezze-communication/target/brezze-communication-1.0.jar app.jar                                                                  0.2s
+ => [backend stage-1 8/8] RUN chown appuser:appgroup app.jar                                                                                                                       0.4s
+ => [backend] exporting to image                                                                                                                                                   0.2s
+ => => exporting layers                                                                                                                                                            0.2s
+ => => writing image sha256:7756a7c20d1aec39d4c444f1ee24f84a96aaa53cc783396a7f1fc91dea71f845                                                                                       0.0s
+ => => naming to docker.io/library/tools-backend                                                                                                                                   0.0s
+ => [backend] resolving provenance for metadata file                                                                                                                               0.0s
+ => [web-test-tool stage-1  6/10] COPY --from=build /app/dist/ ./                                                                                                                  0.0s
+ => [web-test-tool stage-1  7/10] COPY nginx.conf /etc/nginx/nginx.conf                                                                                                            0.0s
+ => [web-test-tool stage-1  8/10] RUN echo 'window.TEST_TOOL_CONFIG = { baseUrl: "${BASE_URL}" };' > /usr/share/nginx/html/config.template.js                                      0.2s
+ => [web-test-tool stage-1  9/10] RUN echo '#!/bin/sh' > /docker-entrypoint.sh &&     echo 'envsubst < /usr/share/nginx/html/config.template.js > /usr/share/nginx/html/config.js  0.2s
+ => [web-test-tool stage-1 10/10] RUN chown -R appuser:appgroup /usr/share/nginx/html &&     chown -R appuser:appgroup /var/cache/nginx &&     chown -R appuser:appgroup /var/log  0.3s
+ => [web-test-tool] exporting to image                                                                                                                                             0.1s
+ => => exporting layers                                                                                                                                                            0.1s
+ => => writing image sha256:cbc9d4e25881d4cb43e20d79637db6fac25a15f7a4ce41c429d2710ce9af6ce2                                                                                       0.0s
+ => => naming to docker.io/library/tools-web-test-tool                                                                                                                             0.0s
+ => [web-test-tool] resolving provenance for metadata file                                                                                                                         0.0s
+[+] Building 4/4
+ ✔ tools-rabbitmq          Built                                                                                                                                                   0.0s 
+ ✔ tools-web-cabinet-bind  Built                                                                                                                                                   0.0s 
+ ✔ tools-web-test-tool     Built                                                                                                                                                   0.0s 
+ ✔ tools-backend           Built                                                                                                                                                   0.0s 
+✅ Build completed successfully!
 
-}
-server {
-    if ($host = api.chargeghar.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
+📋 Next steps:
+1. Review .env file configuration
+2. Run: ./start.sh to start the system
 
+🌐 Production URLs (after deployment):
+   - Backend API: https://powerbank-api.chargeghar.com
+   - Cabinet Bind Tool: https://cabinet.chargeghar.com
+   - Test Tool: https://test.chargeghar.com
+   - API Documentation: https://powerbank-api.chargeghar.com/doc.html
+✅ Docker images built successfully
+ℹ️  Starting services...
+🚀 Starting Power Bank Sharing System...
+🔧 Starting infrastructure services...
+[+] Running 22/22
+ ✔ mysql Pulled                                                                                                                                                                   11.9s 
+   ✔ f17d81b4b692 Pull complete                                                                                                                                                    3.2s 
+   ✔ c691115e6ae9 Pull complete                                                                                                                                                    3.2s 
+   ✔ 41544cb19235 Pull complete                                                                                                                                                    3.4s 
+   ✔ 254d04f5f66d Pull complete                                                                                                                                                    3.5s 
+   ✔ 4fe240edfdc9 Pull complete                                                                                                                                                    3.5s 
+   ✔ 0cd4fcc94b67 Pull complete                                                                                                                                                    4.5s 
+   ✔ 8df36ec4b34a Pull complete                                                                                                                                                    4.5s 
+   ✔ 739800af3a9f Pull complete                                                                                                                                                    4.5s 
+   ✔ 0cbc995daddd Pull complete                                                                                                                                                    8.4s 
+   ✔ 5db5c83b9b9a Pull complete                                                                                                                                                    8.4s 
+   ✔ 9cb56d3f0a7e Pull complete                                                                                                                                                    8.4s 
+   ✔ 448d4de73cac Pull complete                                                                                                                                                    8.4s 
+ ✔ redis Pulled                                                                                                                                                                   12.1s 
+   ✔ f637881d1138 Already exists                                                                                                                                                   0.0s 
+   ✔ e19c7f987b90 Pull complete                                                                                                                                                    6.0s 
+   ✔ 8ec86d8eda96 Pull complete                                                                                                                                                    7.2s 
+   ✔ 46fb2c5cb2c6 Pull complete                                                                                                                                                    7.2s 
+   ✔ 7de9ddbc60e3 Pull complete                                                                                                                                                    7.6s 
+   ✔ ca07f9e0c857 Pull complete                                                                                                                                                    8.1s 
+   ✔ 4f4fb700ef54 Pull complete                                                                                                                                                    8.2s 
+   ✔ 0392188f011d Pull complete                                                                                                                                                    8.6s 
+[+] Running 7/7
+ ✔ Network tools_powerbank-network  Created                                                                                                                                        0.1s 
+ ✔ Volume tools_redis_data          Created                                                                                                                                        0.0s 
+ ✔ Volume tools_rabbitmq_data       Created                                                                                                                                        0.0s 
+ ✔ Volume tools_mysql_data          Created                                                                                                                                        0.0s 
+ ✔ Container powerbank-mysql        Started                                                                                                                                        0.7s 
+ ✔ Container powerbank-rabbitmq     Started                                                                                                                                        0.7s 
+ ✔ Container powerbank-redis        Started                                                                                                                                        0.6s 
+⏳ Waiting for infrastructure services to be ready...
+   Waiting 30 seconds for services to initialize...
+   Checking service status...
+   ✅ MySQL is running
+   ✅ Redis is running
+   ✅ RabbitMQ is running
+✅ Infrastructure services check completed
+🚀 Starting application services...
+[+] Running 7/7
+ ✔ Volume tools_backend_logs         Created                                                                                                                                       0.0s 
+ ✔ Container powerbank-mysql         Healthy                                                                                                                                       0.6s 
+ ✔ Container powerbank-rabbitmq      Healthy                                                                                                                                       0.6s 
+ ✔ Container powerbank-redis         Healthy                                                                                                                                       0.6s 
+ ✔ Container powerbank-backend       Healthy                                                                                                                                      11.3s 
+ ✔ Container powerbank-test-tool     Started                                                                                                                                      11.6s 
+ ✔ Container powerbank-cabinet-bind  Started                                                                                                                                      11.8s 
+✅ Application services started successfully
+⏳ Allowing services to initialize...
+📊 Service Status:
+NAME                     IMAGE                    COMMAND                  SERVICE            CREATED          STATUS                             PORTS
+powerbank-backend        tools-backend            "sh -c 'java $JAVA_O…"   backend            22 seconds ago   Up 21 seconds (healthy)            0.0.0.0:10030->10030/tcp, [::]:10030->10030/tcp
+powerbank-cabinet-bind   tools-web-cabinet-bind   "/docker-entrypoint.…"   web-cabinet-bind   22 seconds ago   Up 10 seconds (health: starting)   80/tcp, 0.0.0.0:8084->8080/tcp, [::]:8084->8080/tcp
+powerbank-mysql          mysql:8.0.12             "docker-entrypoint.s…"   mysql              53 seconds ago   Up 52 seconds (healthy)            33060/tcp, 0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp
+powerbank-rabbitmq       tools-rabbitmq           "docker-entrypoint.s…"   rabbitmq           53 seconds ago   Up 52 seconds (healthy)            4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, [::]:5672->5672/tcp, 15671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp, [::]:15672->15672/tcp
+powerbank-redis          redis:6-alpine           "docker-entrypoint.s…"   redis              53 seconds ago   Up 52 seconds (healthy)            0.0.0.0:6380->6379/tcp, [::]:6380->6379/tcp
+powerbank-test-tool      tools-web-test-tool      "/docker-entrypoint.…"   web-test-tool      22 seconds ago   Up 10 seconds (health: starting)   80/tcp, 0.0.0.0:8083->8081/tcp, [::]:8083->8081/tcp
 
-    listen 80;
-    server_name api.chargeghar.com;
-    return 404; # managed by Certbot
+🔍 Service Health Check:
+   ✅ mysql: Running and healthy
+   ✅ redis: Running and healthy
+   ✅ rabbitmq: Running and healthy
+   ✅ backend: Running and healthy
+   🔄 web-cabinet-bind: Running (health check in progress)
+   🔄 web-test-tool: Running (health check in progress)
 
+✅ All services are running!
 
-}
-root@srv998476:/opt# cat /etc/nginx/sites-available/main.chargeghar.com
-server {
-    server_name main.chargeghar.com;
+✅ System started successfully!
 
-    # Serve static files
-    location /static/ {
-        alias /opt/powerbank/staticfiles/;
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
+🌐 Production Access URLs:
+   - Backend API: https://powerbank-api.chargeghar.com
+   - Cabinet Bind Tool: https://cabinet.chargeghar.com
+   - Test Tool: https://test.chargeghar.com
+   - API Documentation: https://powerbank-api.chargeghar.com/doc.html
 
-    location / {
-        proxy_pass http://127.0.0.1:8010;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto https;
-    }
+📝 Logs:
+   - View all logs: docker compose logs -f
+   - View backend logs: docker compose logs -f backend
+   - View specific service: docker compose logs -f <service-name>
+✅ Services started successfully
 
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/main.chargeghar.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/main.chargeghar.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+✅ Step 7: Deployment Verification
+=================================
+ℹ️  Waiting for services to be ready...
+ℹ️  Checking service status...
+NAME                     IMAGE                    COMMAND                  SERVICE            CREATED              STATUS                             PORTS
+powerbank-backend        tools-backend            "sh -c 'java $JAVA_O…"   backend            53 seconds ago       Up 52 seconds (healthy)            0.0.0.0:10030->10030/tcp, [::]:10030->10030/tcp
+powerbank-cabinet-bind   tools-web-cabinet-bind   "/docker-entrypoint.…"   web-cabinet-bind   53 seconds ago       Up 42 seconds (health: starting)   80/tcp, 0.0.0.0:8084->8080/tcp, [::]:8084->8080/tcp
+powerbank-mysql          mysql:8.0.12             "docker-entrypoint.s…"   mysql              About a minute ago   Up About a minute (healthy)        33060/tcp, 0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp
+powerbank-rabbitmq       tools-rabbitmq           "docker-entrypoint.s…"   rabbitmq           About a minute ago   Up About a minute (healthy)        4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, [::]:5672->5672/tcp, 15671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp, [::]:15672->15672/tcp
+powerbank-redis          redis:6-alpine           "docker-entrypoint.s…"   redis              About a minute ago   Up About a minute (healthy)        0.0.0.0:6380->6379/tcp, [::]:6380->6379/tcp
+powerbank-test-tool      tools-web-test-tool      "/docker-entrypoint.…"   web-test-tool      53 seconds ago       Up 42 seconds (health: starting)   80/tcp, 0.0.0.0:8083->8081/tcp, [::]:8083->8081/tcp
 
-}
+ℹ️  Final port conflict check:
+   ✅ Port 3307 OK
+   ✅ Port 6380 OK
+   ✅ Port 10030 OK
+   ✅ Port 8084 OK
+   ✅ Port 8083 OK
+   ✅ Port 5672 OK
+   ✅ Port 15672 OK
+✅ No port conflicts detected
 
-server {
-    if ($host = main.chargeghar.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
+ℹ️  Testing endpoints...
+✅ Backend API responding
+✅ Cabinet Bind Tool responding
+✅ Test Tool responding
 
+🎉 Deployment Summary
+===================
 
-    listen 80;
-    server_name main.chargeghar.com;
-    return 404; # managed by Certbot
+📊 Service Status:
+NAME                     STATUS                             PORTS
+powerbank-backend        Up 53 seconds (healthy)            0.0.0.0:10030->10030/tcp, [::]:10030->10030/tcp
+powerbank-cabinet-bind   Up 43 seconds (health: starting)   80/tcp, 0.0.0.0:8084->8080/tcp, [::]:8084->8080/tcp
+powerbank-mysql          Up About a minute (healthy)        33060/tcp, 0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp
+powerbank-rabbitmq       Up About a minute (healthy)        4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, [::]:5672->5672/tcp, 15671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp, [::]:15672->15672/tcp
+powerbank-redis          Up About a minute (healthy)        0.0.0.0:6380->6379/tcp, [::]:6380->6379/tcp
+powerbank-test-tool      Up 43 seconds (health: starting)   80/tcp, 0.0.0.0:8083->8081/tcp, [::]:8083->8081/tcp
 
+🌐 Access URLs:
+   • Backend API: https://powerbank-api.chargeghar.com
+   • API Documentation: https://powerbank-api.chargeghar.com/doc.html
+   • Cabinet Bind Tool: https://cabinet.chargeghar.com
+   • Test Tool: https://test.chargeghar.com
+   • RabbitMQ Management: http://213.210.21.113:15672
 
-}
-root@srv998476:/opt# 
+🔧 Local Access (for debugging):
+   • Backend API: http://localhost:10030
+   • Cabinet Bind Tool: http://localhost:8084
+   • Test Tool: http://localhost:8083
+
+📝 Useful Commands:
+   • View logs: docker compose logs -f
+   • Restart services: docker compose restart
+   • Stop services: docker compose down
+
+✅ Deployment completed successfully!
+
+✅ 🎉 Deployment completed for production environment!
+
+ℹ️  📋 Next Steps:
+   1. Verify DNS records point to this server
+   2. Test all URLs are accessible
+   3. Monitor logs: docker compose logs -f
+   4. Set up monitoring and backups
+root@srv998476:/opt/tools# 
+
+root@srv998476:/opt/tools# ls /etc/nginx/sites-available/
+api.chargeghar.com  default  main.chargeghar.com  powerbank-api.chargeghar.com  test.chargeghar.com
+root@srv998476:/opt/tools# 
+
