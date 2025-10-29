@@ -19,7 +19,9 @@ COPY cabinet.html index.html
 COPY css/ ./css/
 COPY js/ ./js/
 COPY layer/ ./layer/
-COPY img/ ./img/
+
+# Create img directory (will be empty for now)
+RUN mkdir -p ./img/
 
 # Create configuration template for environment variable substitution
 COPY config.template.js ./config.template.js
