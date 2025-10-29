@@ -1,0 +1,12 @@
+./build.sh
+docker-compose build --no-cache backend
+docker-compose build --no-cache web-cabinet-bind
+docker-compose build --no-cache web-test-tool
+docker images | grep device-relatedtools
+ docker-compose logs backend
+curl -u admin:admin123 http://localhost:15672/api/overview
+docker exec powerbank-rabbitmq rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+docker exec powerbank-rabbitmq rabbitmq-plugins list
+docker exec powerbank-rabbitmq rabbitmq-plugins list | grep delayed
+
+docker compose up -d backend web-cabinet-bind web-test-tool

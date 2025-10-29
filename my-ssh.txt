@@ -1,0 +1,104 @@
+root@srv998476:/opt# ls
+iotdemo  powerbank
+root@srv998476:/opt# whereis nginx
+nginx: /usr/sbin/nginx /etc/nginx /usr/share/nginx /usr/share/man/man8/nginx.8.gz
+root@srv998476:/opt# ls /etc/nginx/sites-available/
+api.chargeghar.com  default  main.chargeghar.com 
+root@srv998476:/opt# ls
+iotdemo  powerbank
+root@srv998476:/opt# 
+
+
+root@srv998476:/opt# ls
+iotdemo  powerbank
+root@srv998476:/opt# whereis nginx
+nginx: /usr/sbin/nginx /etc/nginx /usr/share/nginx /usr/share/man/man8/nginx.8.gz
+root@srv998476:/opt# ls /etc/nginx/sites-available/
+api.chargeghar.com  default  main.chargeghar.com
+root@srv998476:/opt# ls
+iotdemo  powerbank
+root@srv998476:/opt# docker ps
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED        STATUS                  PORTS                                                                  NAMES
+3865ae16ed1b   iotdemo-app                             "catalina.sh run"        3 hours ago    Up 3 hours (healthy)    0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp                            iotdemo-app-prod
+293683d48df8   mysql:8.0                               "docker-entrypoint.s…"   3 hours ago    Up 3 hours (healthy)    0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp                 iotdemo-mysql-prod
+edc6c33c4bb8   redis:7.2-alpine                        "docker-entrypoint.s…"   3 hours ago    Up 3 hours (healthy)    0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp                            iotdemo-redis-prod
+ed8de9fce526   powerbank_production-powerbank_celery   "python -m celery -A…"   28 hours ago   Up 28 hours             80/tcp                                                                 powerbank_production-powerbank_celery-1
+b80c51253731   powerbank_production-powerbank_api      "sh -c 'python manag…"   28 hours ago   Up 28 hours (healthy)   0.0.0.0:8010->80/tcp, [::]:8010->80/tcp                                powerbank_production-powerbank_api-1
+e10879f43505   rabbitmq:3.13-management-alpine         "docker-entrypoint.s…"   28 hours ago   Up 28 hours (healthy)   4369/tcp, 5671-5672/tcp, 15671-15672/tcp, 15691-15692/tcp, 25672/tcp   powerbank_production-powerbank_rabbitmq-1
+96708a2fbff8   postgres:15                             "docker-entrypoint.s…"   28 hours ago   Up 28 hours (healthy)   5432/tcp                                                               powerbank_production-powerbank_db-1
+a9e30c371b98   redis:7-alpine                          "docker-entrypoint.s…"   28 hours ago   Up 28 hours (healthy)   6379/tcp                                                               powerbank_production-powerbank_redis-1
+root@srv998476:/opt# 
+
+
+
+root@srv998476:/opt# cat /etc/nginx/sites-available/api.chargeghar.com
+server {
+    server_name api.chargeghar.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/api.chargeghar.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api.chargeghar.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = api.chargeghar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name api.chargeghar.com;
+    return 404; # managed by Certbot
+
+
+}
+root@srv998476:/opt# cat /etc/nginx/sites-available/main.chargeghar.com
+server {
+    server_name main.chargeghar.com;
+
+    # Serve static files
+    location /static/ {
+        alias /opt/powerbank/staticfiles/;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8010;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/main.chargeghar.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/main.chargeghar.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = main.chargeghar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name main.chargeghar.com;
+    return 404; # managed by Certbot
+
+
+}
+root@srv998476:/opt# 

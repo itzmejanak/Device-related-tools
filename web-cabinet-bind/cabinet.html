@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="js/jquery1.11.3.min.js"></script>
+		<script src="layer/layer.js"></script>
+		<script src="config.js"></script>
+		<link href="css/style.css" rel="stylesheet">
+
+		<meta charset="utf-8" />
+		<title>Cabinet Bind Tool</title>
+	</head>
+	<body>
+		<div class="form">
+			<div class="item">
+				<input class="input" type="text" name="" id="deviceId" placeholder="Please enter the Station SN" value="" />
+			</div>
+			<div class="item" style="border-top:none;">
+				<input class="input" type="text" name="" id="imei" placeholder="Please enter the IMEI" value="" />
+			</div>
+			<div class="item" style="border-top:none;display: none;">
+				<input class="input" type="text" name="" id="vietqr" placeholder="Please enter the VQR QR Code" value="" />
+			</div>
+			<button class="scan">Bind</button>
+			<button class="unbind">Unbind</button>
+			<h2 style="text-align: center;">To unbind the station, you only need the IMEI or station SN</h2>
+			<h2 style="text-align: center;">When unbinding, if both the IMEI and the station SN have values, the IMEI will prevail.</h2>
+		</div>
+	</body>
+</html>
+
+<script>
+	// Get configuration from environment
+	var baseurl = window.CABINET_BIND_CONFIG ? window.CABINET_BIND_CONFIG.baseUrl : "http://localhost:10030";
+	$(".scan").on("click", function() {
+		var deviceId = $("#deviceId").val();
+		var imei = $("#imei").val();
+		var vietqr = $("#vietqr").val();
+		var language = getLanguage();
+		if (!deviceId) {
+			layer.msg('Please enter the Station SN');
+			return;
+		}
+		if (!imei) {
+			layer.msg('Please enter the IMEI');
+			return;
+		}
+		// if (!vietqr) {
+		// 	layer.msg('Please enter the VQR QR Code');
+		// 	return;
+		// }
+
+		console.info("scanNo:" + deviceId + " >>>> IMEI:" + imei);
+		$.ajax({
+			//请求方式
+			type: "POST",
+			//请求的媒体类型
+			//contentType: "json;charset=UTF-8",
+			dataType: "json",
+			//请求地址
+			url: baseurl + '/communication/common/brezze-test-util/cabinets/bind',
+			//数据，json字符串
+			data: {
+				'scanNo': deviceId,
+				'imei': imei,
+				'vietqr': vietqr
+			},
+			headers: {
+				'brezze-language': language
+			},
+			//请求成功
+			success: function(result) {
+				if (result.code == 0) {
+					layer.msg('Bind Success');
+					$("#deviceId").val('');
+					$("#imei").val('');
+					$("#vietqr").val('');
+				} else {
+					layer.msg(result.message);
+				}
+				console.log(result);
+			},
+			//请求失败，包含具体的错误信息
+			error: function(e) {
+				console.log(e.code);
+				console.log(e.responseText);
+			}
+		});
+	});
+
+	$(".unbind").on("click", function() {
+		var deviceId = $("#deviceId").val();
+		var imei = $("#imei").val();
+		var language = getLanguage();
+		console.info(language);
+		if (!deviceId && !imei) {
+			layer.msg('Please enter the Station SN or IMEI');
+			return;
+		}
+
+		console.info(deviceId);
+		$.ajax({
+			//请求方式
+			type: "POST",
+			//请求的媒体类型
+			//contentType: "json;charset=UTF-8",
+			dataType: "json",
+			//请求地址
+			url: baseurl + '/communication/common/brezze-test-util/cabinets/unbind',
+			//数据，json字符串
+			data: {
+				'scanNo': deviceId,
+				'imei': imei
+			},
+			headers: {
+				'brezze-language': language
+			},
+			//请求成功
+			success: function(result) {
+				if (result.code == 0) {
+					layer.msg('Unbind Success');
+				} else {
+					layer.msg(result.message);
+				}
+				console.log(result);
+			},
+			//请求失败，包含具体的错误信息
+			error: function(e) {
+				console.log(e.code);
+				console.log(e.responseText);
+			}
+		});
+	});
+
+	window.onload = function(e) {
+		var code = "";
+		let lastTime, nextTime;
+		let lastCode, nextCode;
+
+		document.onkeypress = function(e) {
+			nextCode = e.which;
+			nextTime = new Date().getTime();
+			if (e.which === 13) {
+				if (code.length < 3) return // 手动输入的时间不会让code的长度大于2，所以这里只会对扫码枪有
+				console.log(code)
+				console.log('扫码结束')
+				// that.distinguishCode(code) // 获取到扫码枪输入的内容，做别的操作
+				var targetId = e.target.getAttribute("id");
+				distinguishCode(targetId, code);
+				code = ''
+				lastCode = ''
+				lastTime = ''
+				return
+			}
+			if (!lastTime && !lastCode) {
+				console.log('扫码开始。。。')
+				code += e.key
+			}
+			if (lastCode && lastTime && nextTime - lastTime > 500) { // 当扫码前有keypress事件时,防止首字缺失
+				console.log('防止首字缺失。。。')
+				code = e.key
+			} else if (lastCode && lastTime) {
+				console.log('扫码中。。。')
+				code += e.key
+			}
+			lastCode = nextCode;
+			lastTime = nextTime;
+		}
+	}
+
+	function distinguishCode(targetId, code) {
+		console.info(targetId + '>>>>>>' + code);
+		if (targetId == 'deviceId') {
+			var sno = getQueryString('sno', code);
+			if (sno === "") {
+				sno = getQueryString('id', code);
+			}
+			$("#deviceId").val(sno);
+		} else if (targetId == 'imei') {
+			var imei = getImei(code);
+			$("#" + targetId + "").val(imei);
+		} else if (targetId == 'vietqr') {
+			var vietqr = getVietqr(code);
+			$("#" + targetId + "").val(vietqr);
+		}
+	}
+
+	/**
+	 * 获取查询字符串
+	 * @param key
+	 * @return value
+	 */
+	function getQueryString(key, path) {
+		var value = "";
+		var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+		//search,查询"?"后面的参数，并匹配正则
+		var pathArr = path.split("?");
+		if (pathArr.length < 2) {
+			return path;
+		}
+		path = path.split("?")[1];
+		console.info(path);
+		var r = path.match(reg);
+		if (r != null) {
+			value = unescape(r[2]);
+		}
+		return value;
+	}
+
+	function getLanguage() {
+		var type = navigator.appName;
+		var lang;
+		if (type == "Netscape") {
+			lang = navigator.language; //获取浏览器配置语言，支持非IE浏览器
+		} else {
+			lang = navigator.userLanguage; //获取浏览器配置语言，支持IE5+ == navigator.systemLanguage
+		};
+		lang = lang.substr(0, 2); //获取浏览器配置语言前两位
+		if (lang == "zh") {
+			return 'ZH';
+		} else {
+			return 'EN';
+		}
+	}
+
+	function getImei(code) {
+		var imei = "";
+		/**
+		 *绑定工具要兼容以下IMEI规则：扫描枪扫imei号二维码会有以下三种结果：
+		 *第一种：863597070962890;MPY23KI0W005847;94706C5C5072（字符串带有分号，截取前15位数字）
+		 *第二种：M322M16EHD091204096 864601068508480（字符串不带分号，截取后15位）
+		 *第三种：https://s.dudubox.com/sw'member/factory/scan.html?uuid=861766049773702（字符串不带分号，截取后15位）
+		 *绑定工具还要兼容WIFI模块，绑定要截取 MAC 地址：扫码会显示
+		 *;MPN23LP05002679;441A847D6121;;;441A847D5560;
+		 *然后你要从中间把 MAC 地址<441A847D6121>取出来进行绑定操作。谢谢！
+		 */
+		var indexSplit = code.indexOf(";");
+		if (indexSplit >= 0) {
+			var strArray = code.split(";");
+			if (strArray.length == 3) {
+				imei = strArray[0];
+			} else {
+				let mac = strArray[2];
+				let macInt = parseInt(mac, 16);
+				imei = "1000" + macInt;
+			}
+		} else if (code.indexOf("http") >= 0) {
+			imei = getQueryString("uuid", code);
+		} else if (code.indexOf(" ") >= 0) {
+			var strArray = code.split(" ");
+			imei = strArray[1];
+		} else {
+			imei = code;
+		}
+		if (!isDigits(imei)) {
+			imei = "";
+		}
+		return imei;
+	}
+
+	function getVietqr(code) {
+		if (!code.startsWith("000201010")) {
+			return "";
+		}
+		return code;
+	}
+
+	var deviceIdInput = document.getElementById("deviceId");
+	deviceIdInput.oninput = function(e) {
+		distinguishCode(e.target.getAttribute("id"), deviceIdInput.value);
+	}
+	var imeiInput = document.getElementById("imei");
+	imeiInput.oninput = function(e) {
+		distinguishCode(e.target.getAttribute("id"), imeiInput.value);
+	}
+
+	function isDigits(str) {
+		return !isNaN(str) && !isNaN(parseFloat(str)) && /^\d+$/.test(str);
+	}
+</script>

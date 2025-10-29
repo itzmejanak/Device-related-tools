@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: communication
+  # servlet 文件大小限制
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+server:
+  port: 10000
+  servlet:
+    context-path: /
+
+# 指定日志配置文件加载路径，以及自定义输出级别和路径
+logging:
+  config: classpath:logback-customer.xml
+
+# 指定日志输出路径
+log:
+  level: info
+  path: logs/${spring.application.name}
+
+#  倍斯特
+ybt:
+  enable: true
+  access-key:
+  access-secret:
+  uid:
+  region-id: cn-shanghai
+  product-key:
+  consumer-group-id:
+
+# knife4j自定义文档
+knife4j:
+  # 增强模式
+  enable: true
+  #  生产环境是否查看
+  #  production: true
+  setting:
+    #是否开启界面中对某接口的版本控制,如果开启，后端接口变化后Ui界面会存在小蓝点
+    enableVersion: true
+    swaggerModelName: Schema对象列表
+    # Ui界面不显示分组元素
+    enableGroup: false
+  # 自定义文档
+  documents:
+    - group: ${api-document.group-name}
+      name: 其他文档
+      locations: classpath:markdown/*
+
+api-document:
+  group-name: communication
+  base-package: com.brezze.share.communication.controller
+  title: ${api-document.group-name}
+  description: ${api-document.group-name}
+  version: V2.0
+  license: Apache License, Version 2.0
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  terms-of-service-url: http://127.0.0.1:${server.port}/doc.html
+  contact: xxx@qq.com

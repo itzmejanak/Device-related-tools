@@ -1,0 +1,319 @@
+//eurofonc字体
+// @font-face {
+//   font-family: "eurofonc";
+//   src: url('~assets/font/eurofonc.ttf');
+// }
+
+// 去除a标签默认样式
+a, a:link, a:visited, a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+
+// 图片默认样式
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+// 页面容器样式
+.container-flex {
+  width: 100%;
+  //display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+// 按比例计算图片宽高
+@function scaleImg($val) {
+  @return $val * 100vw / 414px
+}
+
+
+// 距离顶部的距离
+.distance-top {
+  margin-top: 64px;
+  @media screen and (max-width: 1440px) and (min-width: 768px) {
+
+  }
+  @media screen and (max-width: 768px) {
+    margin-top: 88px;
+  }
+}
+
+// 按钮样式
+.btn {
+  width: calc(100% - 24px * 2);
+  height: 52px;
+  line-height: 52px;
+  margin: auto;
+  background: #fff155;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 0px rgba(255,241,85,0.50);
+
+  font-size: 24px;
+  // font-family: EurofontC, EurofontC-Regular;
+  font-family: eurofonc;;
+  font-weight: 400;
+  text-align: CENTER;
+  color: #1a232d;
+  text-shadow: 0px 0px 20px 0px rgba(255,241,85,0.50);
+}
+
+
+// 大标题
+.title {
+  font-size: 42px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #111111;
+  line-height: 59px;
+  @media screen and (max-width: 1440px) and (min-width: 768px) {
+    font-size: 32px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 45px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 21px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 29px;
+  }
+}
+
+// 大标题描述
+.title-desc {
+  font-size: 24px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #888888;
+  line-height: 32px;
+
+  @media screen and (max-width: 1440px) and (min-width: 768px) {
+    font-size: 17px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #888888;
+    line-height: 24px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #888888;
+    line-height: 17px;
+  }
+
+}
+
+// 小标题
+.title-small {
+  font-size: 28px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #111111;
+  line-height: 40px;
+  @media screen and (max-width: 1440px) and (min-width: 768px) {
+    font-size: 21px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 29px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 17px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 24px;
+  }
+}
+
+// 小标题描述
+.title-small-desc {
+  font-size: 17px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #888888;
+  line-height: 24px;
+
+  @media screen and (max-width: 1440px) and (min-width: 768px) {
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #888888;
+    line-height: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #888888;
+    line-height: 17px;
+  }
+
+}
+
+// 阴影效果
+.shadow {
+  box-shadow: none;
+}
+
+.shadow:hover {
+  box-shadow: 0px 16px 26px 0px rgba(0, 0, 0, 0.3);
+}
+
+// 毛玻璃效果
+.ground-glass {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(28,28,30,0.86) !important;
+}
+
+// 反馈消息样式
+.feedback {
+  width: 100%;
+  //height: scaleImg(570px);
+  padding: 0 2.4rem;
+  box-sizing: border-box;
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  margin-bottom: 2.4rem;
+
+  .transition-box {
+    background: #fff;
+    border-radius: 1rem;
+
+    .topLine {
+      color: #000;
+      height: 4.4rem;
+      border-bottom: 1px solid #c4c4c4;
+      display: flex;
+      justify-content: space-between;
+      line-height: 4.4rem;
+      padding: 0 1.6rem;
+      font-size: 2.4rem;
+      font-family: EurofontC, EurofontC-Regular;
+      margin: 0 1.5rem;
+      color: #000000;
+
+      img {
+        position: relative;
+        top: 0.2rem;
+      }
+    }
+
+    .midBoxCnt {
+      height: 20rem;
+      padding: 1.6rem;
+      box-sizing: border-box;
+
+      textarea {
+        color: #000000;
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: 2rem;
+      }
+
+    }
+
+    .textarea-num {
+      position: relative;
+      left: 85%;
+      top: -20px;
+      font-size: 1rem;
+    }
+
+    .ftIpt {
+      width: 100%;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+
+      // 隐藏上传按钮
+      .upload > .el-upload--picture-card {
+        display: none !important;
+      }
+
+      // 文件上传
+      .avatar-uploader {
+        box-sizing: border-box;
+        padding: 0 16px;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .image {
+          width: scaleImg(104px);
+          height: scaleImg(96px);
+          line-height: scaleImg(96px);
+        }
+
+
+        .el-upload-list {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .el-upload--picture-card {
+          background-color: #c4c4c4;
+          border-radius: 6px;
+          box-sizing: border-box;
+          width: scaleImg(104px);
+          height: scaleImg(96px);
+          line-height: scaleImg(96px);
+          margin-left: 8px;
+        }
+
+        .el-upload-list__item {
+          width: scaleImg(104px);
+          height: scaleImg(96px);
+          margin: 0;
+        }
+
+
+      }
+
+
+
+      .input {
+        width: 10.4rem;
+        height: 9.6rem;
+        background: rgb(196, 196, 196);
+        display: none;
+      }
+    }
+
+    .fotCnt {
+      width: calc(100% - 16px * 2);
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .btn {
+        width: calc(100% - 40px - 16px);
+        margin-bottom: 0;
+      }
+    }
+
+    .btn, .fotCnt {
+      margin-bottom: 12px;
+    }
+  }
+}

@@ -1,0 +1,301 @@
+a, a:link, a:visited, a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.container-flex {
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.distance-top {
+  margin-top: 64px;
+}
+
+@media screen and (max-width: 768px) {
+  .distance-top {
+    margin-top: 88px;
+  }
+}
+
+.btn {
+  width: calc(100% - 24px * 2);
+  height: 52px;
+  line-height: 52px;
+  margin: auto;
+  background: #fff155;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 0px rgba(255, 241, 85, 0.5);
+  font-size: 24px;
+  font-family: eurofonc;
+  font-weight: 400;
+  text-align: CENTER;
+  color: #1a232d;
+  text-shadow: 0px 0px 20px 0px rgba(255, 241, 85, 0.5);
+}
+
+.title {
+  font-size: 42px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #111111;
+  line-height: 59px;
+}
+
+@media screen and (max-width: 1440px) and (min-width: 768px) {
+  .title {
+    font-size: 32px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 45px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 21px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 29px;
+  }
+}
+
+.title-desc {
+  font-size: 24px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #888888;
+  line-height: 32px;
+}
+
+@media screen and (max-width: 1440px) and (min-width: 768px) {
+  .title-desc {
+    font-size: 17px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #888888;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title-desc {
+    font-size: 12px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #888888;
+    line-height: 17px;
+  }
+}
+
+.title-small {
+  font-size: 28px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #111111;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 1440px) and (min-width: 768px) {
+  .title-small {
+    font-size: 21px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 29px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title-small {
+    font-size: 17px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #111111;
+    line-height: 24px;
+  }
+}
+
+.title-small-desc {
+  font-size: 17px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #888888;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1440px) and (min-width: 768px) {
+  .title-small-desc {
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #888888;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title-small-desc {
+    font-size: 12px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #888888;
+    line-height: 17px;
+  }
+}
+
+.shadow {
+  box-shadow: none;
+}
+
+.shadow:hover {
+  box-shadow: 0px 16px 26px 0px rgba(0, 0, 0, 0.3);
+}
+
+.ground-glass {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(28, 28, 30, 0.86) !important;
+}
+
+.feedback {
+  width: 100%;
+  padding: 0 2.4rem;
+  box-sizing: border-box;
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  margin-bottom: 2.4rem;
+}
+
+.feedback .transition-box {
+  background: #fff;
+  border-radius: 1rem;
+}
+
+.feedback .transition-box .topLine {
+  color: #000;
+  height: 4.4rem;
+  border-bottom: 1px solid #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  line-height: 4.4rem;
+  padding: 0 1.6rem;
+  font-size: 2.4rem;
+  font-family: EurofontC, EurofontC-Regular;
+  margin: 0 1.5rem;
+  color: #000000;
+}
+
+.feedback .transition-box .topLine img {
+  position: relative;
+  top: 0.2rem;
+}
+
+.feedback .transition-box .midBoxCnt {
+  height: 20rem;
+  padding: 1.6rem;
+  box-sizing: border-box;
+}
+
+.feedback .transition-box .midBoxCnt textarea {
+  color: #000000;
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  font-size: 2rem;
+}
+
+.feedback .transition-box .textarea-num {
+  position: relative;
+  left: 85%;
+  top: -20px;
+  font-size: 1rem;
+}
+
+.feedback .transition-box .ftIpt {
+  width: 100%;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.feedback .transition-box .ftIpt .upload > .el-upload--picture-card {
+  display: none !important;
+}
+
+.feedback .transition-box .ftIpt .avatar-uploader {
+  box-sizing: border-box;
+  padding: 0 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.feedback .transition-box .ftIpt .avatar-uploader .image {
+  width: 25.12077vw;
+  height: 23.18841vw;
+  line-height: 23.18841vw;
+}
+
+.feedback .transition-box .ftIpt .avatar-uploader .el-upload-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback .transition-box .ftIpt .avatar-uploader .el-upload--picture-card {
+  background-color: #c4c4c4;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 25.12077vw;
+  height: 23.18841vw;
+  line-height: 23.18841vw;
+  margin-left: 8px;
+}
+
+.feedback .transition-box .ftIpt .avatar-uploader .el-upload-list__item {
+  width: 25.12077vw;
+  height: 23.18841vw;
+  margin: 0;
+}
+
+.feedback .transition-box .ftIpt .input {
+  width: 10.4rem;
+  height: 9.6rem;
+  background: #c4c4c4;
+  display: none;
+}
+
+.feedback .transition-box .fotCnt {
+  width: calc(100% - 16px * 2);
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback .transition-box .fotCnt .btn {
+  width: calc(100% - 40px - 16px);
+  margin-bottom: 0;
+}
+
+.feedback .transition-box .btn, .feedback .transition-box .fotCnt {
+  margin-bottom: 12px;
+}

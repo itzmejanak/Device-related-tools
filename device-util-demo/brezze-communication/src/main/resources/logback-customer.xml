@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--
+       说明：
+        1.日志到达maxFileSize会自动滚动
+        2.日志保存maxHistory天
+        3.log.path这个日志文件夹的项目，会在log日志自动创建，保证这个日志空间小于totalSizeCap（到达totalSizeCap后，会删除最老时间的配日志）
+    -->
+
+    <!--logback.xml加载早于application.yml，如果直接通过${参数key}的形式获取是无法获取到对应参数值的。解决的方法是使用：springProperty标签-->
+    <springProperty scope="context" name="log.path" source="log.path"/>
+    <!--设置日志编码格式-->
+    <property name="charset" value="UTF-8"/>
+    <!--设置日志文件大小-->
+    <property name="maxFileSize" value="100MB"/>
+    <!--日志文件保留天数-->
+    <property name="maxHistory" value="45"/>
+    <!--设置日志目录最大大小-->
+    <property name="totalSizeCap" value="5GB"/>
+
+
+    <!--控制台日志-->
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%p %d [%t] %c{36} - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 设置按尺寸和时间（同时满足）分割 -->
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- each file should be at most 10MB, keep 15 days worth of history, but at most 1GB -->
+            <maxFileSize>${maxFileSize}</maxFileSize>
+            <maxHistory>${maxHistory}</maxHistory>
+            <totalSizeCap>${totalSizeCap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

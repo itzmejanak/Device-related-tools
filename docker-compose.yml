@@ -1,0 +1,200 @@
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0.12
+    container_name: powerbank-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-123456}
+      MYSQL_DATABASE: ${DB_NAME:-db_share}
+      MYSQL_USER: ${DB_USER:-brezze}
+      MYSQL_PASSWORD: ${DB_USER_PASSWORD:-brezze123}
+    ports:
+      - "3307:3306"  # Changed from 3306 to avoid conflict
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - powerbank-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Redis Cache
+  redis:
+    image: redis:6-alpine
+    container_name: powerbank-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    ports:
+      - "6380:6379"  # Changed from 6379 to avoid conflict
+    volumes:
+      - redis_data:/data
+    networks:
+      - powerbank-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      timeout: 10s
+      retries: 5
+
+  # RabbitMQ Message Queue with delayed message plugin
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+      dockerfile: Dockerfile
+    container_name: powerbank-rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-admin}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-admin}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - powerbank-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      timeout: 30s
+      retries: 5
+
+  # Backend Spring Boot Application
+  backend:
+    build:
+      context: ./device-util-demo
+      dockerfile: Dockerfile
+    container_name: powerbank-backend
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SERVER_PORT: 10030
+      
+      # Database configuration
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-db_share}
+      DB_USERNAME: ${DB_USERNAME:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-123456}
+      
+      # Redis configuration
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DATABASE: 0
+      
+      # RabbitMQ configuration
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME:-admin}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD:-admin}
+      RABBITMQ_VHOST: /
+      
+      # YBT configuration
+      YBT_ENABLE: ${YBT_ENABLE:-false}
+      YBT_ACCESS_KEY: ${YBT_ACCESS_KEY:-}
+      YBT_ACCESS_SECRET: ${YBT_ACCESS_SECRET:-}
+      YBT_UID: ${YBT_UID:-}
+      YBT_REGION_ID: ${YBT_REGION_ID:-cn-shanghai}
+      YBT_PRODUCT_KEY: ${YBT_PRODUCT_KEY:-}
+      YBT_CONSUMER_GROUP_ID: ${YBT_CONSUMER_GROUP_ID:-}
+    ports:
+      - "10030:10030"
+    volumes:
+      - backend_logs:/app/logs
+    networks:
+      - powerbank-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:10030/api/common/config/pre_auth_amount"]
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Web Cabinet Bind Tool
+  web-cabinet-bind:
+    build:
+      context: ./web-cabinet-bind
+      dockerfile: Dockerfile
+    container_name: powerbank-cabinet-bind
+    restart: unless-stopped
+    environment:
+      BASE_URL: ${BACKEND_URL:-http://backend:10030}
+      DEFAULT_LANGUAGE: EN
+    ports:
+      - "8084:8080"  # Changed to 8084 to avoid conflict with 8081
+    networks:
+      - powerbank-network
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      timeout: 10s
+      retries: 3
+
+  # Web Test Tool
+  web-test-tool:
+    build:
+      context: ./web-test-tool-demo
+      dockerfile: Dockerfile
+    container_name: powerbank-test-tool
+    restart: unless-stopped
+    environment:
+      BASE_URL: ${BACKEND_URL:-http://backend:10030}
+    ports:
+      - "8083:8081"  # Changed from 8082 to 8083 for clarity
+    networks:
+      - powerbank-network
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8081/health"]
+      timeout: 10s
+      retries: 3
+
+  # Nginx Reverse Proxy (Optional)
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: powerbank-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    networks:
+      - powerbank-network
+    depends_on:
+      - backend
+      - web-cabinet-bind
+      - web-test-tool
+    profiles:
+      - proxy
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+  rabbitmq_data:
+    driver: local
+  backend_logs:
+    driver: local
+
+networks:
+  powerbank-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
