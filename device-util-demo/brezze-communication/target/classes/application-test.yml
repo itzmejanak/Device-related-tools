@@ -1,0 +1,52 @@
+server:
+  port: 10030
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_share?useSSL=false&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    #   Druid数据源配置
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      connection-init-sqls: set names utf8mb4
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 5
+        max-concurrency: 10
+        # 设置MQ应答模式
+        acknowledge-mode: manual
+        retry:
+          # 开启重试
+          enabled: true
+          # 重试次数
+          max-attempts: 3
+          # 重试间隔
+          initial-interval: 2000
+

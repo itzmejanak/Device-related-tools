@@ -54,13 +54,20 @@ if [ -f "/etc/nginx/sites-available/api.chargeghar.com" ] && [ -f "/etc/nginx/si
     nginx_setup_needed=false
     ssl_setup_needed=false
     
-    if [ ! -f "/etc/nginx/sites-available/powerbank-api.chargeghar.com" ]; then
-        print_info "First deployment detected - nginx setup required"
+    # Check if all nginx configs exist and are enabled
+    if [ ! -f "/etc/nginx/sites-available/powerbank-api.chargeghar.com" ] || \
+       [ ! -f "/etc/nginx/sites-available/cabinet.chargeghar.com" ] || \
+       [ ! -f "/etc/nginx/sites-available/test.chargeghar.com" ] || \
+       [ ! -L "/etc/nginx/sites-enabled/cabinet.chargeghar.com" ]; then
+        print_info "Nginx setup required - missing configs or cabinet not enabled"
         nginx_setup_needed=true
     fi
     
-    if [ ! -f "/etc/letsencrypt/live/powerbank-api.chargeghar.com/fullchain.pem" ]; then
-        print_info "SSL certificates not found - setup required"
+    # Check if SSL certificates exist for all domains
+    if [ ! -f "/etc/letsencrypt/live/powerbank-api.chargeghar.com/fullchain.pem" ] || \
+       [ ! -f "/etc/letsencrypt/live/cabinet.chargeghar.com/fullchain.pem" ] || \
+       [ ! -f "/etc/letsencrypt/live/test.chargeghar.com/fullchain.pem" ]; then
+        print_info "SSL certificates missing for some domains - setup required"
         ssl_setup_needed=true
     fi
     
