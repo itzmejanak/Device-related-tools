@@ -18,8 +18,8 @@ RUN npm config set registry https://registry.npmjs.org/ && \
 # Copy source code
 COPY . .
 
-# Create Docker environment file
-RUN echo "BASE_URL=http://backend:10030" > .env.docker
+# Create Docker environment file with placeholder
+RUN echo "BASE_URL=__BASE_URL_PLACEHOLDER__" > .env.docker
 
 # Build the application for Docker environment
 RUN npm run generate:docker
@@ -52,6 +52,8 @@ RUN echo 'window.TEST_TOOL_CONFIG = { baseUrl: "${BASE_URL}" };' > /usr/share/ng
 # Create startup script for environment variable substitution
 RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \
     echo 'envsubst < /usr/share/nginx/html/config.template.js > /usr/share/nginx/html/config.js' >> /docker-entrypoint.sh && \
+    echo '# Replace BASE_URL placeholder in all JS files' >> /docker-entrypoint.sh && \
+    echo 'find /usr/share/nginx/html -name "*.js" -type f -exec sed -i "s|__BASE_URL_PLACEHOLDER__|${BASE_URL}|g" {} \;' >> /docker-entrypoint.sh && \
     echo 'nginx -g "daemon off;"' >> /docker-entrypoint.sh && \
     chmod +x /docker-entrypoint.sh
 
@@ -70,7 +72,7 @@ USER appuser
 EXPOSE 8081
 
 # Environment variables with defaults
-ENV BASE_URL=http://localhost:10030
+ENV BASE_URL=https://powerbank-api.chargeghar.com
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
