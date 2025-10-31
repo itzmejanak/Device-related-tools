@@ -111,8 +111,8 @@ EOF
             print_warning "Please verify production credentials in .env file"
             print_info "Configuration:"
             echo "  • Backend: https://powerbank-api.chargeghar.com"
-            echo "  • Cabinet Bind: https://cabinet.chargeghar.com"
-            echo "  • Test Tool: https://test.chargeghar.com"
+            echo "  • Cabinet Bind: https://powerbank-api.chargeghar.com/binding"
+            echo "  • Test Tool: https://powerbank-api.chargeghar.com/test"
             echo "  • MySQL Port: 3307 (to avoid conflicts)"
             echo "  • Redis Port: 6380 (to avoid conflicts)"
         else
@@ -135,8 +135,8 @@ YBT_REGION_ID=cn-shanghai
 YBT_PRODUCT_KEY=your_production_ybt_product_key
 YBT_CONSUMER_GROUP_ID=your_production_consumer_group_id
 BACKEND_URL=https://powerbank-api.chargeghar.com
-CABINET_BIND_URL=https://cabinet.chargeghar.com
-TEST_TOOL_URL=https://test.chargeghar.com
+CABINET_BIND_URL=https://powerbank-api.chargeghar.com/binding
+TEST_TOOL_URL=https://powerbank-api.chargeghar.com/test
 EOF
             print_warning "Created production template - PLEASE UPDATE PASSWORDS AND CREDENTIALS!"
         fi

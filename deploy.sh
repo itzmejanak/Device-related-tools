@@ -50,24 +50,35 @@ if [ -f "/etc/nginx/sites-available/api.chargeghar.com" ] && [ -f "/etc/nginx/si
     print_info "Switching to production environment..."
     ./switch-env.sh production
     
+    # Clean up old subdomain configurations if they exist
+    print_info "Checking for old subdomain configurations..."
+    if [ -f "/etc/nginx/sites-available/cabinet.chargeghar.com" ] || [ -f "/etc/nginx/sites-available/test.chargeghar.com" ]; then
+        print_warning "Found old subdomain configurations - cleaning up..."
+        if [ -f "./cleanup-old-subdomains.sh" ]; then
+            print_info "Running cleanup script in auto mode..."
+            ./cleanup-old-subdomains.sh --auto 2>/dev/null || print_warning "Cleanup script had issues, continuing..."
+            print_success "Old configurations cleaned up"
+        else
+            print_warning "Cleanup script not found, manual cleanup may be needed"
+        fi
+    else
+        print_info "No old subdomain configurations found"
+    fi
+    
     # Check if nginx setup is needed
     nginx_setup_needed=false
     ssl_setup_needed=false
     
-    # Check if all nginx configs exist and are enabled
+    # Check if nginx config exists and is enabled (single domain architecture)
     if [ ! -f "/etc/nginx/sites-available/powerbank-api.chargeghar.com" ] || \
-       [ ! -f "/etc/nginx/sites-available/cabinet.chargeghar.com" ] || \
-       [ ! -f "/etc/nginx/sites-available/test.chargeghar.com" ] || \
-       [ ! -L "/etc/nginx/sites-enabled/cabinet.chargeghar.com" ]; then
-        print_info "Nginx setup required - missing configs or cabinet not enabled"
+       [ ! -L "/etc/nginx/sites-enabled/powerbank-api.chargeghar.com" ]; then
+        print_info "Nginx setup required - missing config or not enabled"
         nginx_setup_needed=true
     fi
     
-    # Check if SSL certificates exist for all domains
-    if [ ! -f "/etc/letsencrypt/live/powerbank-api.chargeghar.com/fullchain.pem" ] || \
-       [ ! -f "/etc/letsencrypt/live/cabinet.chargeghar.com/fullchain.pem" ] || \
-       [ ! -f "/etc/letsencrypt/live/test.chargeghar.com/fullchain.pem" ]; then
-        print_info "SSL certificates missing for some domains - setup required"
+    # Check if SSL certificate exists for main domain
+    if [ ! -f "/etc/letsencrypt/live/powerbank-api.chargeghar.com/fullchain.pem" ]; then
+        print_info "SSL certificate missing for powerbank-api.chargeghar.com - setup required"
         ssl_setup_needed=true
     fi
     
@@ -151,10 +162,13 @@ print_success "🎉 Deployment completed for $ENVIRONMENT environment!"
 echo ""
 print_info "📋 Next Steps:"
 if [ "$ENVIRONMENT" = "production" ]; then
-    echo "   1. Verify DNS records point to this server"
-    echo "   2. Test all URLs are accessible"
+    echo "   1. Test new single domain URLs:"
+    echo "      • Backend API: https://powerbank-api.chargeghar.com/"
+    echo "      • Cabinet Tool: https://powerbank-api.chargeghar.com/binding/"
+    echo "      • Test Tool: https://powerbank-api.chargeghar.com/test/"
+    echo "   2. Update DNS records (remove cabinet and test subdomains)"
     echo "   3. Monitor logs: docker compose logs -f"
-    echo "   4. Set up monitoring and backups"
+    echo "   4. Verify no CORS errors in browser console"
 else
     echo "   1. Test the application locally"
     echo "   2. Make any needed changes"

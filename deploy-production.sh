@@ -139,15 +139,11 @@ if [[ "$1" == "--setup-nginx" ]] || [[ "$2" == "--setup-nginx" ]]; then
     if [ -d "/etc/nginx/sites-available" ]; then
         print_info "Installing nginx configurations..."
         
-        # Copy configurations
-        cp nginx/sites-available/powerbank-api.chargeghar.com /etc/nginx/sites-available/ && print_status 0 "Installed powerbank-api.chargeghar.com config" || print_warning "Could not copy powerbank-api config"
-        cp nginx/sites-available/cabinet.chargeghar.com /etc/nginx/sites-available/ && print_status 0 "Installed cabinet.chargeghar.com config" || print_warning "Could not copy cabinet config"
-        cp nginx/sites-available/test.chargeghar.com /etc/nginx/sites-available/ && print_status 0 "Installed test.chargeghar.com config" || print_warning "Could not copy test config"
+        # Copy main configuration (single domain architecture)
+        cp nginx/sites-available/powerbank-api.chargeghar.com /etc/nginx/sites-available/ && print_status 0 "Installed powerbank-api.chargeghar.com config (single domain)" || print_warning "Could not copy powerbank-api config"
         
-        # Enable sites
-        ln -sf /etc/nginx/sites-available/powerbank-api.chargeghar.com /etc/nginx/sites-enabled/ && print_status 0 "Enabled powerbank-api.chargeghar.com" || print_warning "Could not enable powerbank-api"
-        ln -sf /etc/nginx/sites-available/cabinet.chargeghar.com /etc/nginx/sites-enabled/ && print_status 0 "Enabled cabinet.chargeghar.com" || print_warning "Could not enable cabinet"
-        ln -sf /etc/nginx/sites-available/test.chargeghar.com /etc/nginx/sites-enabled/ && print_status 0 "Enabled test.chargeghar.com" || print_warning "Could not enable test"
+        # Enable main site (single domain serves all tools)
+        ln -sf /etc/nginx/sites-available/powerbank-api.chargeghar.com /etc/nginx/sites-enabled/ && print_status 0 "Enabled powerbank-api.chargeghar.com (single domain)" || print_warning "Could not enable powerbank-api"
         
         # Test nginx configuration
         if nginx -t 2>/dev/null; then
@@ -176,8 +172,8 @@ if [[ "$1" == "--setup-ssl" ]] || [[ "$2" == "--setup-ssl" ]]; then
     if command -v certbot &> /dev/null; then
         print_info "Setting up SSL certificates..."
         
-        # Setup SSL for each domain
-        domains=("powerbank-api.chargeghar.com" "cabinet.chargeghar.com" "test.chargeghar.com")
+        # Setup SSL for single domain (serves all tools)
+        domains=("powerbank-api.chargeghar.com")
         for domain in "${domains[@]}"; do
             if [ ! -f "/etc/letsencrypt/live/$domain/fullchain.pem" ]; then
                 print_info "Setting up SSL for $domain..."
@@ -355,8 +351,8 @@ echo ""
 echo "🌐 Access URLs:"
 echo "   • Backend API: https://powerbank-api.chargeghar.com"
 echo "   • API Documentation: https://powerbank-api.chargeghar.com/doc.html"
-echo "   • Cabinet Bind Tool: https://cabinet.chargeghar.com"
-echo "   • Test Tool: https://test.chargeghar.com"
+echo "   • Cabinet Bind Tool: https://powerbank-api.chargeghar.com/binding"
+echo "   • Test Tool: https://powerbank-api.chargeghar.com/test"
 echo "   • RabbitMQ Management: http://$(hostname -I | awk '{print $1}'):15672"
 echo ""
 echo "🔧 Local Access (for debugging):"

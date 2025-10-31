@@ -1,456 +1,233 @@
-Browser insposct logs (
-
 cabinet.chargeghar.com
 
-资源项目公司工支付机协议 FB滩名证书问题解决接口文档名服务云服务反馈文档机
+Android
 
-emqxminio mą
+11247325
 
-10000342
+Please enter the IMEI
 
-863597070962890
+Bind
 
-元素控制台源代码/来源网络性能 内存 应用 Lighthouse.
+DevTools is now available in Chinese
 
-保日志停用缓存
+Flements
 
-已停用节流模式
+Console
 
-ㄚ过滤
+Sources
 
-反转
+Network
 
-160 ms
+Don't show again
 
-180 m
+Always match Chrome's language
 
-200 ms
+Performance
 
-更多过滤条件
+Memory
 
-20 ms
+throttling含土土
 
-40 ms
+Application
 
-60 ms
+Privacy and security
 
-80 ms
+Switch DevTools to Chinese
 
-100 ms
+Lighthouse
 
-120 ms
+Recorder
 
-140 ms
+501>
 
-全部 Fetch/XHR 文档 CSS JS 字体
+7 Filber
 
-图片 媒体
+500
 
-清单玄接字 Wasm 其他
+Invert
 
-220 ms
+Praserva ing
 
-240 ms
+Disable cache No
 
-260 ms
+CORS error
 
-280 ms
+More filte
 
-300 ms
+1,000 me
 
-320 ms
+1.500m 2000m 2,500 3,000 m 3,500 ms 4,000
 
-名称 bind
+4,300 m 5,000 3,500 6000
 
-☆
+All Fetch/HR Doc ESS JS Font img Media Manifest Socket Wasm Other
 
-所有书签
+7.000
 
-方法 POST
+7,500m 4000 8500 9,000 9,500 10,000 10,500m 11.000 ms 11.500 mm 12,000 12500 12000 на 13,500 14,000 14,500
 
-状态
+Type shr
 
-CORS 错误
+MP
 
-340 ms
+Initiator
 
-360 ms
+jquery1.11.5.minis5
 
-380 ms
+Size
 
-400 ms
-
-42
-
-协议
-
-类型
-
-大小
-
-时间
+Tinne
 
 0.0 kB
 
-407 ms
+200
 
+激活 Windows Windows,
 
+14:04
 
-test.chargeghar.com/#/Setting?sno=49000444
+2025/10/31
 
-项目链接公司保支付机FB域名证书问题解决
+Message for tester to me:
+Not change, can't we use the same domain name? Accessing files does not necessarily have to be placed in the root directory of the domain or handled across domains
 
-文
+Like below
+https://powerbank-api.chargeghar.com/factory
+https://powerbank-api.chargeghar.com/doc.html
+https://powerbank-api.chargeghar.com/binding/cabinet.html
 
-尺寸:iPhone XR 414
+Updates Information Summary: available
 
-x 896
+36 Security notice(s)
 
-域名服务商云服务反演文档
+18 Important Security notice(s)
 
-75% 已停用节流模式
+18 Moderate Security notice(s)
 
-emqxminio m
+Run "dnf upgrade-minimal-security" to apply all updates. More details please refer to:
 
-车照価机
+https://help.aliyun.com/document_detail/416274.html
 
-所有书签
+Last failed login: Fri Oct 31 10:17:21 CST 2025 from 8.213.197.49 on ssh:notty There were 65 failed login attempts since the last successful login.
 
-< 返回
+Last login: Tue Oct 21 10:47:15 2025 from 223.73.210.203
 
-Save-Data":默认
+[root@iZj6cfaeqpx1ck06qehcjrZ ~]# cd /usr/project/chrgiePower/prod/www/
 
-元素控制台源代码/来源网络
+total 4084
 
-.保留日志
+[root@iZj6cfaeqpx1ck06qehcjrZ www]# 11
 
-停用緩存
+-rw-r--r-- 1 root root
 
-内存应用 Lighthouse性能
+-rw-r--r-- 1 root root
 
-已停用节流模式
+32 May 19 09:56 8410b0ARVq.txt 32
 
-过滤
+drwxr-xr-x 4 root root
 
-311X
+Sep 1 10:15 96737014994acfaab5246eb1f0e4ce0b.html
 
-2,000 ms
+-rw-r-- 1 root root
 
-4,000 ms
+4096 May 22 18:28 agreements
 
-6,000 ms
+drwxr-xr-x 3 root root
 
-8,000 ms
+67445 Jun 9 17:13 agreements.tar.gz
 
-10,000 ms
+4096 Sep 5 15:04 apk
 
-12,000 ms
+drwxr-xr-x 6 root root
 
-14,000 ms
+4096 Apr 13 2025 binding
 
-名称
+drwxr-xr-x 6 root root
 
-18,000 ms
+4096 Sep 12 17:58 bms 4096 Jun 20 17:22 bms20250620
 
-20,000 ms
+drwxr-xr-x 6 root root
 
-更多过滤条件 | 全部 Fetch/XHR 文档 CSS JS 字体图片 媒体清单套接字 Wasm 其他
+4096 Jul 14 17:58 bms714
 
-16,000 ms
+4096 Aug 29 17:17 bms829
 
-22,000 ms
+drwxr-xr-x 6 root root
 
-24,000 m
+drwxr-xr-x 6 root root
 
-26,000 ms
+4096 Aug 6 18:19 bms86
 
-28,000 ms
+drwxr-xr-x 6 root root
 
-30,000 ms
+4096 Dec 28 2023 cabinet
 
-34,000 ms
+drwxr-xr-x 3 root root
 
-36,000 m
+90870 Sep 20 2024 cabinet.tar.gz
 
-32,000 ms
+-rw-r--r-- 1 root root
 
-请求网址
+4096 Jun 13 08:30 certificate
 
-http://backend:10030/communication/ybt/check-all?scanNo=49000444
+drwxr-xr-x 3 root root
 
-check-all?scanNo=49000444
+4096 Jun 16 10:27 device
 
-引荐来源网址政策
+drwxr-xr-x 2 root root
 
-▼响应标头
+3024092 Jun 16 15:20 dist.zip 4096 May 20 18:11 factory
 
-no-referrer-when-downgrade
+-rw-r--r-- 1 root root
 
-X头载荷
+drwxr-xr-x 3 root root
 
-预览响应启动器 时间
+-rw-r---- 1 root root
 
-常规
+745318 May 20 18:14 factory.zip
 
-*请求标头
+4096 Sep 5 10:33 gw
 
-)
+drwxr-xr-x 6 root root
 
+4096 Aug 5 15:15 invitation
 
-Server logs
-(
+drwxr-xr-x 3 root root
 
-Select service (1-7): 1
-Showing logs for all (Press Ctrl+C to exit)...
-powerbank-redis  | 1:C 30 Oct 2025 10:01:05.019 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-powerbank-redis  | 1:C 30 Oct 2025 10:01:05.019 # Redis version=6.2.20, bits=64, commit=00000000, modified=0, pid=1, just started
-powerbank-redis  | 1:C 30 Oct 2025 10:01:05.019 # Configuration loaded
-powerbank-redis  | 1:M 30 Oct 2025 10:01:05.020 * monotonic clock: POSIX clock_gettime
-powerbank-redis  | 1:M 30 Oct 2025 10:01:05.026 * Running mode=standalone, port=6379.
-powerbank-redis  | 1:M 30 Oct 2025 10:01:05.026 # Server initialized
-powerbank-redis  | 1:M 30 Oct 2025 10:01:05.026 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-powerbank-redis  | 1:M 30 Oct 2025 10:01:05.028 * Ready to accept connections
-powerbank-redis  | 1:C 30 Oct 2025 10:07:38.341 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-powerbank-redis  | 1:C 30 Oct 2025 10:07:38.342 # Redis version=6.2.20, bits=64, commit=00000000, modified=0, pid=1, just started
-powerbank-redis  | 1:C 30 Oct 2025 10:07:38.342 # Configuration loaded
-powerbank-redis  | 1:M 30 Oct 2025 10:07:38.459 * monotonic clock: POSIX clock_gettime
-powerbank-redis  | 1:M 30 Oct 2025 10:07:38.461 * Running mode=standalone, port=6379.
-powerbank-redis  | 1:M 30 Oct 2025 10:07:38.461 # Server initialized
-powerbank-redis  | 1:M 30 Oct 2025 10:07:38.461 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-powerbank-redis  | 1:M 30 Oct 2025 10:07:38.478 * Ready to accept connections
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:01:53 +0000] "GET /_nuxt/static/1761818431/manifest.js HTTP/1.0" 200 50 "https://test.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-rabbitmq   | 2025-10-30 10:07:59.431633+00:00 [info] <0.523.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_persistent": using rabbit_msg_store_ets_index to provide index
-powerbank-rabbitmq   | 2025-10-30 10:07:59.432191+00:00 [warning] <0.523.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_persistent": rebuilding indices from scratch
-powerbank-rabbitmq   | 2025-10-30 10:07:59.433825+00:00 [info] <0.510.0> Started message store of type persistent for vhost '/'
-powerbank-rabbitmq   | 2025-10-30 10:07:59.441472+00:00 [info] <0.510.0> Recovering 2 queues of type rabbit_classic_queue took 53ms
-powerbank-rabbitmq   | 2025-10-30 10:07:59.441541+00:00 [info] <0.510.0> Recovering 0 queues of type rabbit_quorum_queue took 0ms
-powerbank-rabbitmq   | 2025-10-30 10:07:59.441566+00:00 [info] <0.510.0> Recovering 0 queues of type rabbit_stream_queue took 0ms
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444174+00:00 [info] <0.254.0> Running boot step empty_db_check defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444246+00:00 [info] <0.254.0> Will not seed default virtual host and user: have definitions to load...
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444343+00:00 [info] <0.254.0> Running boot step rabbit_observer_cli defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444488+00:00 [info] <0.254.0> Running boot step rabbit_looking_glass defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444580+00:00 [info] <0.254.0> Running boot step rabbit_core_metrics_gc defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444781+00:00 [info] <0.254.0> Running boot step background_gc defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.444991+00:00 [info] <0.254.0> Running boot step routing_ready defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.445020+00:00 [info] <0.254.0> Running boot step pre_flight defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.445063+00:00 [info] <0.254.0> Running boot step notify_cluster defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.445095+00:00 [info] <0.254.0> Running boot step networking defined by app rabbit
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:01:54 +0000] "GET /_nuxt/6c76030.js HTTP/1.0" 200 1217 "https://test.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-rabbitmq   | 2025-10-30 10:07:59.445198+00:00 [info] <0.254.0> Running boot step rabbit_quorum_queue_periodic_membership_reconciliation defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.445348+00:00 [info] <0.254.0> Running boot step definition_import_worker_pool defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.445423+00:00 [info] <0.339.0> Starting worker pool 'definition_import_pool' with 8 processes in it
-powerbank-rabbitmq   | 2025-10-30 10:07:59.446857+00:00 [info] <0.254.0> Running boot step cluster_name defined by app rabbit
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:01:54 +0000] "GET /sebei.png HTTP/1.0" 200 4527 "https://test.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:02:29 +0000] "GET / HTTP/1.1" 200 416901 "-" "curl/8.5.0" "-"
-powerbank-rabbitmq   | 2025-10-30 10:07:59.446905+00:00 [info] <0.254.0> Running boot step virtual_host_reconciliation defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.447410+00:00 [info] <0.254.0> Running boot step direct_client defined by app rabbit
-powerbank-rabbitmq   | 2025-10-30 10:07:59.447498+00:00 [info] <0.254.0> Running boot step rabbit_federation_exchange defined by app rabbitmq_federation
-powerbank-rabbitmq   | 2025-10-30 10:07:59.447908+00:00 [info] <0.254.0> Running boot step rabbit_management_load_definitions defined by app rabbitmq_management
-powerbank-rabbitmq   | 2025-10-30 10:07:59.448013+00:00 [info] <0.578.0> Resetting node maintenance status
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0> Deprecated features: `management_metrics_collection`: Feature `management_metrics_collection` is deprecated.
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0> By default, this feature can still be used for now.
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0> Its use will not be permitted by default in a future minor RabbitMQ version and the feature will be removed from a future major RabbitMQ version; actual versions to be determined.
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0> To continue using this feature when it is not permitted by default, set the following parameter in your configuration:
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0>     "deprecated_features.permit.management_metrics_collection = true"
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0> To test RabbitMQ as if the feature was removed, set this in your configuration:
-powerbank-rabbitmq   | 2025-10-30 10:07:59.848193+00:00 [warning] <0.607.0>     "deprecated_features.permit.management_metrics_collection = false"
-powerbank-rabbitmq   | 2025-10-30 10:08:06.699866+00:00 [info] <0.644.0> Management plugin: HTTP (non-TLS) listener started on port 15672
-powerbank-test-tool  | 2025/10/30 10:07:37 [warn] 7#7: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
-powerbank-test-tool  | nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:15 +0000] "GET /_nuxt/6c76030.js HTTP/1.0" 200 1217 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:25 +0000] "GET /_nuxt/5fff1f4.js HTTP/1.0" 200 19813 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:25 +0000] "GET /_nuxt/0aa69a2.js HTTP/1.0" 200 18525 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:36 +0000] "GET / HTTP/1.0" 200 416901 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:38 +0000] "GET /_nuxt/35d77b0.js HTTP/1.0" 200 2397 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:38 +0000] "GET /_nuxt/0476342.js HTTP/1.0" 200 243088 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:38 +0000] "GET /_nuxt/8afd533.js HTTP/1.0" 200 1942897 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:38 +0000] "GET /_nuxt/6abb411.js HTTP/1.0" 200 43506 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:38 +0000] "GET /_nuxt/64ee814.js HTTP/1.0" 200 945 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:42 +0000] "GET /_nuxt/static/1761818431/manifest.js HTTP/1.0" 200 50 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:42 +0000] "GET /_nuxt/static/1761818431/state.js HTTP/1.0" 200 373 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool  | 172.20.0.1 - - [30/Oct/2025:10:09:42 +0000] "GET /_nuxt/static/1761818431/payload.js HTTP/1.0" 200 55 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-cabinet-bind  | 2025/10/30 10:01:46 [warn] 8#8: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
-powerbank-cabinet-bind  | nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:04 +0000] "GET / HTTP/1.0" 200 8080 "-" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:04 +0000] "GET /js/jquery1.11.3.min.js HTTP/1.0" 200 95962 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:04 +0000] "GET /css/style.css HTTP/1.0" 200 958 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:04 +0000] "GET /config.js HTTP/1.0" 200 169 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:04 +0000] "GET /layer/layer.js HTTP/1.0" 200 22116 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:04 +0000] "GET /layer/theme/default/layer.css?v=3.1.1 HTTP/1.0" 200 14367 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 2025/10/30 10:02:05 [error] 16#16: *7 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.0", host: "cabinet.chargeghar.com", referrer: "https://cabinet.chargeghar.com/"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:05 +0000] "GET /favicon.ico HTTP/1.0" 404 555 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Linux; Android 14; Infinix X6881 Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20250802 MMWEBID/8241 MicroMessenger/8.0.62.2881(0x28003E41) WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/en ABI/arm64" "27.34.72.206"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:02:29 +0000] "GET / HTTP/1.1" 200 8080 "-" "curl/8.5.0" "-"
-powerbank-cabinet-bind  | 2025/10/30 10:07:37 [warn] 7#7: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
-powerbank-cabinet-bind  | nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:40 +0000] "GET / HTTP/1.0" 200 8080 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:41 +0000] "GET /layer/layer.js HTTP/1.0" 200 22116 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:41 +0000] "GET /js/jquery1.11.3.min.js HTTP/1.0" 200 95962 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:42 +0000] "GET /css/style.css HTTP/1.0" 200 958 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:42 +0000] "GET /config.js HTTP/1.0" 200 169 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:48 +0000] "GET /layer/theme/default/layer.css?v=3.1.1 HTTP/1.0" 200 14367 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 2025/10/30 10:07:49 [error] 13#13: *7 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.0", host: "cabinet.chargeghar.com", referrer: "https://cabinet.chargeghar.com/"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:07:49 +0000] "GET /favicon.ico HTTP/1.0" 404 555 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:20 +0000] "GET / HTTP/1.0" 200 8080 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:21 +0000] "GET /layer/layer.js HTTP/1.0" 200 22116 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:21 +0000] "GET /config.js HTTP/1.0" 200 169 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:21 +0000] "GET /js/jquery1.11.3.min.js HTTP/1.0" 200 95962 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:21 +0000] "GET /css/style.css HTTP/1.0" 200 958 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:26 +0000] "GET /layer/theme/default/layer.css?v=3.1.1 HTTP/1.0" 200 14367 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-mysql         | 2025-10-30T10:01:15.406494Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.12)  MySQL Community Server - GPL.
-powerbank-cabinet-bind  | 2025/10/30 10:08:27 [error] 8#8: *14 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.0", host: "cabinet.chargeghar.com", referrer: "https://cabinet.chargeghar.com/"
-powerbank-cabinet-bind  | 172.20.0.1 - - [30/Oct/2025:10:08:27 +0000] "GET /favicon.ico HTTP/1.0" 404 555 "https://cabinet.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "120.231.220.180"
-powerbank-cabinet-bind  | 205.210.31.11 - - [30/Oct/2025:10:11:56 +0000] "\x16\x03\x01\x00\xEE\x01\x00\x00\xEA\x03\x03n\x83\x19>\xD3\xB4\xDF\x92\xDD\x12\xCD/\xD8\xAE\x19\xA2\x94&\xD1\xA8d\xA6?\xA6sR\xA0-\xB0\xDE\x5C\xC7 \xF2\xFB0v\x97\x10\xF350cR\x05\xFCn\x15\xD4o\xB5`\xB3\xC3,\x09h-7\x84\xF5\xC9EE\xA2\x00&\xC0+\xC0/\xC0,\xC00\xCC\xA9\xCC\xA8\xC0\x09\xC0\x13\xC0" 400 157 "-" "-" "-"
-powerbank-cabinet-bind  | 205.210.31.11 - - [30/Oct/2025:10:11:56 +0000] "\x16\x03\x01\x00\xCA\x01\x00\x00\xC6\x03\x03\xE9\xC2C\xAB\x14\xEF\xA5\xF5^~\xED\xA3\xB2D2J\xF3%kDtO\xDF_}\xE8[\x10\xCC\xF11\x90\x00\x00h\xCC\x14\xCC\x13\xC0/\xC0+\xC00\xC0,\xC0\x11\xC0\x07\xC0'\xC0#\xC0\x13\xC0\x09\xC0(\xC0$\xC0\x14\xC0" 400 157 "-" "-" "-"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:10:25 +0000] "GET / HTTP/1.0" 200 416901 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "27.34.72.206"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:10:26 +0000] "GET /_nuxt/static/1761818431/payload.js HTTP/1.0" 200 55 "https://test.chargeghar.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "27.34.72.206"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:10:26 +0000] "GET /_nuxt/static/1761818431/state.js HTTP/1.0" 200 373 "https://test.chargeghar.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "27.34.72.206"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:10:26 +0000] "GET /_nuxt/static/1761818431/manifest.js HTTP/1.0" 200 50 "https://test.chargeghar.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "27.34.72.206"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:11:31 +0000] "GET /_nuxt/5fff1f4.js HTTP/1.0" 200 19813 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:11:32 +0000] "GET /_nuxt/0aa69a2.js HTTP/1.0" 200 18525 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:11:33 +0000] "GET /sebei.png HTTP/1.0" 200 4527 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:39 +0000] "GET / HTTP/1.0" 200 416901 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:40 +0000] "GET /_nuxt/35d77b0.js HTTP/1.0" 200 2397 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:40 +0000] "GET /_nuxt/0476342.js HTTP/1.0" 200 243088 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:40 +0000] "GET /_nuxt/8afd533.js HTTP/1.0" 200 1942897 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:41 +0000] "GET /_nuxt/6abb411.js HTTP/1.0" 200 43506 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-backend       | INFO 2025-10-30 18:23:06,168 [http-nio-10030-exec-10] c.b.s.communication.aop.AspectApiLog - 
-powerbank-backend       | /************************************************************************************
-powerbank-backend       | method: GET uri: /api/common/config/pre_auth_amount ip: [0:0:0:0:0:0:0:1]
-powerbank-backend       | headers: {"host":"localhost:10030","user-agent":"curl/7.64.0","accept":"*/*"}
-powerbank-backend       | queryString: 
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:41 +0000] "GET /_nuxt/64ee814.js HTTP/1.0" 200 945 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:41 +0000] "GET /_nuxt/static/1761818431/state.js HTTP/1.0" 200 373 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:41 +0000] "GET /_nuxt/static/1761818431/payload.js HTTP/1.0" 200 55 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:13:41 +0000] "GET /_nuxt/static/1761818431/manifest.js HTTP/1.0" 200 50 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:14:29 +0000] "GET / HTTP/1.0" 304 0 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-backend       | body: 
-powerbank-rabbitmq   | 2025-10-30 10:08:06.700028+00:00 [info] <0.674.0> Statistics database started.
-powerbank-rabbitmq      | 2025-10-30 10:08:06.700096+00:00 [info] <0.673.0> Starting worker pool 'management_worker_pool' with 3 processes in it
-powerbank-rabbitmq      | 2025-10-30 10:08:06.712109+00:00 [info] <0.696.0> Prometheus metrics: HTTP (non-TLS) listener started on port 15692
-powerbank-rabbitmq      | 2025-10-30 10:08:06.712258+00:00 [info] <0.578.0> Ready to start client connection listeners
-powerbank-rabbitmq      | 2025-10-30 10:08:06.715325+00:00 [info] <0.740.0> started TCP listener on [::]:5672
-powerbank-rabbitmq      |  completed with 6 plugins.
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0> Server startup complete; 6 plugins started.
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0>  * rabbitmq_prometheus
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0>  * rabbitmq_federation
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0>  * rabbitmq_delayed_message_exchange
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0>  * rabbitmq_management
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0>  * rabbitmq_management_agent
-powerbank-rabbitmq      | 2025-10-30 10:08:06.881044+00:00 [info] <0.578.0>  * rabbitmq_web_dispatch
-powerbank-rabbitmq      | 2025-10-30 10:08:06.915059+00:00 [info] <0.9.0> Time to start RabbitMQ: 26371 ms
-powerbank-mysql         | 
-powerbank-mysql         | MySQL init process done. Ready for start up.
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:14:30 +0000] "GET /_nuxt/8afd533.js HTTP/1.0" 206 1 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:14:30 +0000] "GET /_nuxt/8afd533.js HTTP/1.0" 206 796414 "https://test.chargeghar.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1" "120.231.220.180"
-powerbank-test-tool     | 135.237.126.200 - - [30/Oct/2025:10:17:03 +0000] "MGLNDD_213.210.21.113_8083" 400 157 "-" "-" "-"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:37 +0000] "GET / HTTP/1.0" 200 416901 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:37 +0000] "GET /_nuxt/35d77b0.js HTTP/1.0" 200 2397 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:37 +0000] "GET /_nuxt/0476342.js HTTP/1.0" 200 243088 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:37 +0000] "GET /_nuxt/8afd533.js HTTP/1.0" 200 1942897 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/6abb411.js HTTP/1.0" 200 43506 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/64ee814.js HTTP/1.0" 200 945 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/static/1761818431/state.js HTTP/1.0" 200 373 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-mysql         | 
-powerbank-mysql         | 2025-10-30T10:01:15.870177Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
-powerbank-mysql         | 2025-10-30T10:01:15.870339Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.12) starting as process 1
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | 2025-10-30T10:01:16.182728Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-powerbank-mysql         | 2025-10-30T10:01:16.186184Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-powerbank-mysql         | 2025-10-30T10:01:16.193458Z 0 [Warning] [MY-010315] [Server] 'user' entry 'mysql.infoschema@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.193492Z 0 [Warning] [MY-010315] [Server] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.193501Z 0 [Warning] [MY-010315] [Server] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.193510Z 0 [Warning] [MY-010315] [Server] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.193531Z 0 [Warning] [MY-010323] [Server] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.193537Z 0 [Warning] [MY-010323] [Server] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.193548Z 0 [Warning] [MY-010311] [Server] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.196164Z 0 [Warning] [MY-010330] [Server] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.196193Z 0 [Warning] [MY-010330] [Server] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:01:16.201523Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.12'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-powerbank-mysql         | 2025-10-30T10:07:42.120146Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
-powerbank-mysql         | 2025-10-30T10:07:42.120281Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.12) starting as process 1
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/static/1761818431/payload.js HTTP/1.0" 200 55 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/static/1761818431/manifest.js HTTP/1.0" 200 50 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/5fff1f4.js HTTP/1.0" 200 19813 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:38 +0000] "GET /_nuxt/0aa69a2.js HTTP/1.0" 200 18525 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-test-tool     | 172.20.0.1 - - [30/Oct/2025:10:24:39 +0000] "GET /sebei.png HTTP/1.0" 200 4527 "https://test.chargeghar.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "47.236.31.37"
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-rabbitmq      | 2025-10-30 10:08:09.761017+00:00 [info] <0.747.0> accepting AMQP connection <0.747.0> (172.20.0.2:47126 -> 172.20.0.5:5672)
-powerbank-rabbitmq      | 2025-10-30 10:08:09.791517+00:00 [info] <0.747.0> connection <0.747.0> (172.20.0.2:47126 -> 172.20.0.5:5672) has a client-provided name: rabbitConnectionFactory#48c76607:10
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-rabbitmq      | 2025-10-30 10:08:09.795325+00:00 [info] <0.747.0> connection <0.747.0> (172.20.0.2:47126 -> 172.20.0.5:5672 - rabbitConnectionFactory#48c76607:10): user 'manu_admin' authenticated and granted access to vhost '/'
-powerbank-mysql         | mbind: Operation not permitted
-powerbank-mysql         | 2025-10-30T10:07:43.945821Z 0 [System] [MY-010229] [Server] Starting crash recovery...
-powerbank-mysql         | 2025-10-30T10:07:43.948141Z 0 [System] [MY-010232] [Server] Crash recovery finished.
-powerbank-mysql         | 2025-10-30T10:07:44.124127Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-powerbank-mysql         | 2025-10-30T10:07:44.140351Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-powerbank-mysql         | 2025-10-30T10:07:44.225226Z 0 [Warning] [MY-010315] [Server] 'user' entry 'mysql.infoschema@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.225508Z 0 [Warning] [MY-010315] [Server] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.225584Z 0 [Warning] [MY-010315] [Server] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.225629Z 0 [Warning] [MY-010315] [Server] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.225706Z 0 [Warning] [MY-010323] [Server] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.225766Z 0 [Warning] [MY-010323] [Server] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.225864Z 0 [Warning] [MY-010311] [Server] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.237373Z 0 [Warning] [MY-010330] [Server] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.237414Z 0 [Warning] [MY-010330] [Server] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
-powerbank-mysql         | 2025-10-30T10:07:44.248313Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.12'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-powerbank-backend       | response: {"code":"0","data":{"value":"1000","comment":"","keyName":"pre-auth-amount","currency":"EUR"},"message":"S-Success(0)"}
-powerbank-backend       | elapsed time: [0ms] range time: [2025/10/30 18:23:06 167 - 2025/10/30 18:23:06 167]
-powerbank-backend       | ************************************************************************************/
-powerbank-backend       | 
-powerbank-backend       | INFO 2025-10-30 18:23:36,211 [http-nio-10030-exec-2] c.b.s.communication.aop.AspectApiLog - 
-powerbank-backend       | /************************************************************************************
-powerbank-backend       | method: GET uri: /api/common/config/pre_auth_amount ip: [0:0:0:0:0:0:0:1]
-powerbank-backend       | headers: {"host":"localhost:10030","user-agent":"curl/7.64.0","accept":"*/*"}
-powerbank-backend       | queryString: 
-powerbank-backend       | body: 
-powerbank-backend       | response: {"code":"0","data":{"value":"1000","comment":"","keyName":"pre-auth-amount","currency":"EUR"},"message":"S-Success(0)"}
-powerbank-backend       | elapsed time: [0ms] range time: [2025/10/30 18:23:36 211 - 2025/10/30 18:23:36 211]
-powerbank-backend       | ************************************************************************************/
-powerbank-backend       | 
-powerbank-backend       | INFO 2025-10-30 18:24:06,269 [http-nio-10030-exec-4] c.b.s.communication.aop.AspectApiLog - 
-powerbank-backend       | /************************************************************************************
-powerbank-backend       | method: GET uri: /api/common/config/pre_auth_amount ip: [0:0:0:0:0:0:0:1]
-powerbank-backend       | headers: {"host":"localhost:10030","user-agent":"curl/7.64.0","accept":"*/*"}
-powerbank-backend       | queryString: 
-powerbank-backend       | body: 
-powerbank-backend       | response: {"code":"0","data":{"value":"1000","comment":"","keyName":"pre-auth-amount","currency":"EUR"},"message":"S-Success(0)"}
-powerbank-backend       | elapsed time: [0ms] range time: [2025/10/30 18:24:06 269 - 2025/10/30 18:24:06 269]
-powerbank-backend       | ************************************************************************************/
-powerbank-backend       | 
-powerbank-backend       | INFO 2025-10-30 18:24:36,318 [http-nio-10030-exec-6] c.b.s.communication.aop.AspectApiLog - 
-powerbank-backend       | /************************************************************************************
-powerbank-backend       | method: GET uri: /api/common/config/pre_auth_amount ip: [0:0:0:0:0:0:0:1]
-powerbank-backend       | headers: {"host":"localhost:10030","user-agent":"curl/7.64.0","accept":"*/*"}
-powerbank-backend       | queryString: 
-powerbank-backend       | body: 
-powerbank-backend       | response: {"code":"0","data":{"value":"1000","comment":"","keyName":"pre-auth-amount","currency":"EUR"},"message":"S-Success(0)"}
-powerbank-backend       | elapsed time: [0ms] range time: [2025/10/30 18:24:36 317 - 2025/10/30 18:24:36 317]
-powerbank-backend       | ************************************************************************************/
-powerbank-backend       | 
-powerbank-backend       | INFO 2025-10-30 18:25:06,372 [http-nio-10030-exec-8] c.b.s.communication.aop.AspectApiLog - 
-powerbank-backend       | /************************************************************************************
-powerbank-backend       | method: GET uri: /api/common/config/pre_auth_amount ip: [0:0:0:0:0:0:0:1]
-powerbank-backend       | headers: {"host":"localhost:10030","user-agent":"curl/7.64.0","accept":"*/*"}
-powerbank-backend       | queryString: 
-powerbank-backend       | body: 
-powerbank-backend       | response: {"code":"0","data":{"value":"1000","comment":"","keyName":"pre-auth-amount","currency":"EUR"},"message":"S-Success(0)"}
-powerbank-backend       | elapsed time: [0ms] range time: [2025/10/30 18:25:06 372 - 2025/10/30 18:25:06 372]
-powerbank-backend       | ************************************************************************************/
-powerbank-backend       | 
+4096 Jun 9 15:43 invitation69
 
+4096 Sep 3 15:09 m
 
+drwxr-xr-x 3 root root
 
+4096 Aug 29 16:43 m-20250830
 
-)
+drwxr-xr-x 3 root root
+
+4096 Jun 12 15:57 m612
+
+4096 Sep 4 17:58 partner
+
+drwxr-xr-x 3 root root
+
+drwxr-xr-x 3 root root
+
+drwxr-xr-x 2 root root
+
+4096 Aug 30 17:34 pre-release830
+
+drwxr-xr-x 3 root root
+
+68726 May 22 18:33 web-chrgiepower-device.zip
+
+٢٠٠٢-٢٧- 1 root root
+
+81106 May 20 17:56 web-dragon-cabinet-bind.zip
+
+32 May 26 10:31 Zn5YCeVIbq.txt
+
+-rw-r-- 1 root root
+
+-rw-r--r-- 1 root root
+
+[root@iZj6cfaeqpx1ck06qehcjrZ www]#

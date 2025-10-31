@@ -101,8 +101,8 @@ if [ -f ".env" ] && grep -q "chargeghar.com" .env; then
     TEST_URL=$(grep "TEST_TOOL_URL=" .env | cut -d'=' -f2)
     
     echo "   - Backend API: ${BACKEND_URL:-https://powerbank-api.chargeghar.com}"
-    echo "   - Cabinet Bind Tool: ${CABINET_URL:-https://cabinet.chargeghar.com}"
-    echo "   - Test Tool: ${TEST_URL:-https://test.chargeghar.com}"
+    echo "   - Cabinet Bind Tool: ${CABINET_BIND_URL:-https://powerbank-api.chargeghar.com/binding}"
+    echo "   - Test Tool: ${TEST_TOOL_URL:-https://powerbank-api.chargeghar.com/test}"
     echo "   - API Documentation: ${BACKEND_URL:-https://powerbank-api.chargeghar.com}/doc.html"
 else
     echo "🌐 Local Development URLs:"

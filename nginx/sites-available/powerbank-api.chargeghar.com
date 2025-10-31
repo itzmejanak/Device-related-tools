@@ -1,7 +1,58 @@
 server {
     server_name powerbank-api.chargeghar.com;
 
-    # Power Bank Backend API
+    # Cabinet Binding Tool
+    location /binding/ {
+        proxy_pass http://127.0.0.1:8084/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_redirect off;
+        
+        # Timeout settings
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # Test Tool
+    location /test/ {
+        proxy_pass http://127.0.0.1:8083/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_redirect off;
+        
+        # Timeout settings
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # Factory Tools (reserved for future use as per manufacturer recommendation)
+    # location /factory/ {
+    #     proxy_pass http://127.0.0.1:8085/;
+    #     proxy_set_header Host $host;
+    #     proxy_set_header X-Real-IP $remote_addr;
+    #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #     proxy_set_header X-Forwarded-Proto $scheme;
+    #     proxy_set_header X-Forwarded-Host $host;
+    #     proxy_set_header X-Forwarded-Server $host;
+    #     proxy_redirect off;
+    #     
+    #     # Timeout settings
+    #     proxy_connect_timeout 60s;
+    #     proxy_send_timeout 60s;
+    #     proxy_read_timeout 60s;
+    # }
+
+    # Power Bank Backend API (default - must be last)
     location / {
         proxy_pass http://127.0.0.1:10030;
         proxy_set_header Host $host;
@@ -19,7 +70,7 @@ server {
         proxy_send_timeout 60s;
         proxy_read_timeout 60s;
         
-        # CORS headers (if needed)
+        # CORS headers (no longer needed since same domain, but keeping for backward compatibility)
         add_header 'Access-Control-Allow-Origin' '*' always;
         add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
         add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,brezze-language' always;
