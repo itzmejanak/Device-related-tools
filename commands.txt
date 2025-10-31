@@ -10,3 +10,17 @@ docker exec powerbank-rabbitmq rabbitmq-plugins list
 docker exec powerbank-rabbitmq rabbitmq-plugins list | grep delayed
 
 docker compose up -d backend web-cabinet-bind web-test-tool
+
+
+
+# Enable the nginx site
+sudo ln -sf /etc/nginx/sites-available/powerbank-api.chargeghar.com /etc/nginx/sites-enabled/
+
+# Test nginx configuration
+sudo nginx -t
+
+# Reload nginx
+sudo systemctl reload nginx
+
+# Get SSL certificate
+sudo certbot --nginx -d powerbank-api.chargeghar.com --non-interactive --agree-tos --email admin@chargeghar.com

@@ -4,7 +4,8 @@ import com.brezze.share.communication.cabinet.service.*;
 import com.brezze.share.communication.config.YbtConfig;
 import com.brezze.share.communication.oo.dto.ConnectTokenDTO;
 import com.brezze.share.communication.oo.dto.DeviceDetailDTO;
-import com.brezze.share.communication.utils.EmqxUtil;
+import com.brezze.share.communication.oo.dto.DeviceStatusDTO;
+import com.brezze.share.communication.utils.IotUtil;
 import com.brezze.share.communication.utils.pay.StripePay;
 import com.brezze.share.utils.common.constant.RedisKeyCst;
 import com.brezze.share.utils.common.constant.mq.YbtMQCst;
@@ -36,6 +37,13 @@ public class YbtServiceImpl implements YbtService {
     private YbtConfig ybtConfig;
     @Resource
     private RabbitTemplate rabbitTemplate;
+
+    @Override
+    public void deviceStatus(DeviceStatusDTO dto){
+        if ("online".equals(dto.getStatus())){
+            sendLocationId(dto.getDeviceName(),"location id ");
+        }
+    }
 
     @Override
     public void checkAll(String deviceName) {
@@ -123,7 +131,7 @@ public class YbtServiceImpl implements YbtService {
 
     @Override
     public void sendCmd(String deviceName, String data) {
-        EmqxUtil.pubTopicMsg(EmqxUtil.HOST, EmqxUtil.USERNAME, EmqxUtil.PASSWORD, EmqxUtil.PRODUCT_KEY, deviceName, data);
+        IotUtil.pubGetTopicMsg(ybtConfig.getAccessKey(), ybtConfig.getAccessSecret(), ybtConfig.getRegionId(), ybtConfig.getIotInstanceId(), data, ybtConfig.getProductKey(), deviceName);
     }
 
     @Override

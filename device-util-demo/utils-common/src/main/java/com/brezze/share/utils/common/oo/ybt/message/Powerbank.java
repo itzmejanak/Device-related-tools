@@ -1,52 +1,32 @@
 package com.brezze.share.utils.common.oo.ybt.message;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.brezze.share.utils.common.string.ByteUtils;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "Powerbank", description = "充电宝数据")
 public class Powerbank {
-    @JsonIgnore
-    @JSONField(serialize = false, deserialize = false)
+
     private int[] data;
-    @ApiModelProperty(value = "串口（10进制）", dataType = "int", required = false, example = "")
     private int pinboardIndex;
-    @ApiModelProperty(value = "孔位", dataType = "int", required = false, example = "")
     private int index;
-    @ApiModelProperty(value = "状态（10进制）", dataType = "int", required = false, example = "")
     private int status;
     private int undefined1;
     private int undefined2;
-    @ApiModelProperty(value = "电芯电压，显示需要除以10", dataType = "int", required = false, example = "")
     private int batteryVol;
-    @ApiModelProperty(value = "区域码", dataType = "int", required = false, example = "")
     private int area;
     private int[] sn;
-    @ApiModelProperty(value = "电量", dataType = "int", required = false, example = "")
     private int power;
-    @ApiModelProperty(value = "温度", dataType = "int", required = false, example = "")
     private int temp;
-    @ApiModelProperty(value = "电压，显示需要除以10", dataType = "int", required = false, example = "")
     private int voltage;
-    @ApiModelProperty(value = "电流，显示需要除以10", dataType = "int", required = false, example = "")
     private int current;
-    @ApiModelProperty(value = "软件版本，显示需要拼接V1", dataType = "int", required = false, example = "")
     private int softVersion;
     private int hardVersion;
     private int snAsInt;
-    @ApiModelProperty(value = "充电宝SN号", dataType = "String", required = false, example = "")
     private String snAsString;
     private boolean putaway;               //系统入库
-    @ApiModelProperty(value = "故障说明", dataType = "String", required = false, example = "")
     private String message = "OK";         //故障说明
     private int lockCount;                 //锁孔次数
     private boolean locked;                //锁孔次数
     private boolean log;
-    @ApiModelProperty(value = "微动开关：1断开 0闭合", dataType = "String", required = false, example = "")
     private String microSwitch;            //微动开关
-    @ApiModelProperty(value = "电磁阀开关：1断开 0闭合", dataType = "String", required = false, example = "")
     private String solenoidValveSwitch;    //电磁阀开关
 
 
@@ -85,9 +65,6 @@ public class Powerbank {
         } else if (snAsInt == 0) {
             message = "NONE";
         }
-//        else if ((voltage < 45 || voltage > 55) && voltage != 255) {
-//            message = "电压异常，正常：4.5-5.5V";
-//        }else if ((temp < 10 || temp > 60) && temp != 255) {
         else if ((temp > 60) && temp != 255) {
             message = "温度异常，正常：10—60";
         } else if (!(snAsString.length() == 8 || snAsString.length() == 9 || snAsString.equals("0"))) {
@@ -95,9 +72,6 @@ public class Powerbank {
         } else if ((power < 0 || power > 100) && power != 255) {
             message = "电量异常，正常：0—100%";
         }
-//        else if(current < 0 || current > 30){
-//            message = "电流异常，正常：0.0—3A";
-//        }
     }
 
     public int getLockCount() {

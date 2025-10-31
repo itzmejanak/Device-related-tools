@@ -44,16 +44,6 @@ public class AliyunYbtClient implements CommandLineRunner {
         if (!ybtConfig.isEnable()) {
             return;
         }
-        
-        // Validate required configuration
-        if (StringUtil.isEmpty(ybtConfig.getAccessKey()) || 
-            StringUtil.isEmpty(ybtConfig.getAccessSecret()) || 
-            StringUtil.isEmpty(ybtConfig.getUid()) || 
-            StringUtil.isEmpty(ybtConfig.getConsumerGroupId())) {
-            log.error("YBT IoT configuration is incomplete. Missing required fields: accessKey, accessSecret, uid, or consumerGroupId");
-            return;
-        }
-        
         log.info("开始连接iot mqtt[YBT]====================================================================================");
         //参数说明，请参见：AMQP客户端接入说明。
         long timeStamp = System.currentTimeMillis();

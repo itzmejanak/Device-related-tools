@@ -13,7 +13,7 @@ public interface OrderService {
     void sendOrderInfoViaEmail(String orderNo, String email);
 
     /**
-     * 租借归还时发送收据消息，屏幕会显示二维码
+     * 租借、归还成功时发送收据消息，屏幕会显示二维码
      *
      * @param orderNo     租借订单号
      * @param startTime   开始时间/结束时间

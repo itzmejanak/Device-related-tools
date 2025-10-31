@@ -1,5 +1,11 @@
 package com.brezze.share.communication.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.brezze.share.communication.cabinet.entity.BaseEntity;
+import com.brezze.share.communication.cabinet.entity.Cabinet;
+import com.brezze.share.communication.cabinet.service.CabinetService;
+import com.brezze.share.utils.common.constant.CabinetCst;
 import com.brezze.share.utils.common.enums.hint.Hint;
 import com.brezze.share.utils.common.number.NumberUtil;
 import com.brezze.share.utils.common.result.Rest;
@@ -12,12 +18,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 @Api(tags = "公共接口")
 @ApiSupport(author = "penf", order = 1)
 @Slf4j
 @RestController
 @RequestMapping("")
 public class BindingController {
+
+    @Resource
+    private CabinetService cabinetService;
 
     @ApiOperation(httpMethod = "POST", value = "Bind station SN and IMEI", notes = "")
     @ApiImplicitParams({
@@ -26,27 +38,42 @@ public class BindingController {
     })
     @PostMapping("/communication/common/brezze-test-util/cabinets/bind")
     public Rest bind(@RequestParam String scanNo,
-                     @RequestParam String imei
+                     @RequestParam String imei,
+                     @RequestParam(required = false) String vietqr
     ) {
         if (StringUtil.isEmpty(scanNo)
                 || StringUtil.isEmpty(imei)) {
             return Rest.failure(Hint.BAD_PARAMETER);
         }
-        if (!NumberUtil.isNumeric(imei) && imei.length() != 15) {
+        if (!NumberUtil.isNumeric(imei) || imei.length() != 15) {
             return Rest.failure(Hint.COMMUNICATION_DEVICE_ERROR_IMEI_FORMAT);
         }
-        //1. Check the device SN to see if it already exists. If it does, an error message will be returned.
-        if (true) {
+        LambdaQueryWrapper<Cabinet> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Cabinet::getCabinetNo, scanNo);
+        List<Cabinet> cabinetList = cabinetService.list(wrapper);
+        // Have bind
+        if (!cabinetList.isEmpty()) {
             return Rest.failure(Hint.API_DEVICE_HAS_BIND);
         }
-
-        //2. Check the device IMEI to see if the SN number has been bound. If it has, an error message will be returned.
-        if (true) {
+        LambdaQueryWrapper<Cabinet> cabinetWrapper = new LambdaQueryWrapper<>();
+        cabinetWrapper.eq(Cabinet::getImei, imei);
+        Cabinet cabinet = cabinetService.getOne(cabinetWrapper);
+        if (cabinet == null) {
+            cabinet = new Cabinet();
+            cabinet.setImei(imei)
+                    .setCabinetNo(scanNo)
+                    .setState(CabinetCst.UNACTIVE)
+                    .setVietqr(vietqr);
+            cabinetService.saveOrUpdate(cabinet);
+            return Rest.success();
+        }
+        if (StringUtil.isNotEmpty(cabinet.getCabinetNo()) && !cabinet.getCabinetNo().equalsIgnoreCase(cabinet.getImei())) {
             return Rest.failure(Hint.API_DEVICE_BIND_REPEAT);
         }
-
-        //3. If no data is found based on IMEI, create a new device and save it. If there is data, update the device SN
-        return Rest.failure(Hint.SUCCESS);
+        cabinet.setCabinetNo(scanNo);
+        cabinet.setVietqr(vietqr);
+        cabinetService.saveOrUpdate(cabinet);
+        return Rest.success();
     }
 
     @ApiOperation(httpMethod = "POST", value = "Unbind station SN", notes = "")
@@ -61,14 +88,24 @@ public class BindingController {
         if (StringUtil.isEmpty(scanNo) && StringUtil.isEmpty(imei)) {
             return Rest.failure(Hint.BAD_PARAMETER);
         }
-        //1. Check whether the device exists, use the IMEI parameter first, if the IMEI is empty, use the device SN parameter
-
-        //2. When the device does not exist, an error message will be displayed
-        if (true) {
+        LambdaQueryWrapper<Cabinet> cabinetWrapper = new LambdaQueryWrapper<>();
+        if (StringUtil.isNotEmpty(imei)) {
+            if (!NumberUtil.isNumeric(imei) || imei.length() != 15) {
+                return Rest.failure(Hint.COMMUNICATION_DEVICE_ERROR_IMEI_FORMAT);
+            }
+            cabinetWrapper.eq(Cabinet::getImei, imei);
+        } else {
+            cabinetWrapper.eq(Cabinet::getCabinetNo, scanNo);
+        }
+        List<Cabinet> cabinetList = cabinetService.list(cabinetWrapper);
+        if (cabinetList.isEmpty()) {
             return Rest.failure(Hint.COMMUNICATION_DEVICE_NOT_EXISTS);
         }
-
-        //3. When the device exists, unbind the device SN number
+        LambdaUpdateWrapper<Cabinet> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.set(Cabinet::getCabinetNo, cabinetList.get(0).getImei())
+                .set(Cabinet::getVietqr, null)
+                .eq(BaseEntity::getId, cabinetList.get(0).getId());
+        cabinetService.update(updateWrapper);
         return Rest.success();
     }
 }

@@ -60,6 +60,10 @@ public class ReceiveUpload extends SerialPortData {
             pinboardCount = (int) Math.ceil(d);
         } else {
             pinboardCount = data.length / pinboardAndPowerbank;
+            int symmetry = data.length % pinboardAndPowerbank;
+            if (symmetry > 0) {
+                pinboardCount = pinboardCount + 1;
+            }
         }
         for (int i = 0; i < pinboardCount; i++) {
 
@@ -146,6 +150,12 @@ public class ReceiveUpload extends SerialPortData {
         //多机芯（3口）
         pinboard = size / (6 + 15 * 3);
         if (pinboard % pinboard.intValue() == 0) {
+            if (pinboard == 2) {
+                //判断是否是普及版：4+2
+                if (bytes[4 + 6 + 15 * 4] < 4) {
+                    return 4;
+                }
+            }
             return 3;
         }
 

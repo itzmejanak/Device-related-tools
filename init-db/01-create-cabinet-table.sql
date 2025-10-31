@@ -1,0 +1,44 @@
+-- Database initialization script for PowerBank Cabinet Management
+-- This script creates the bz_cabinet table required for device binding functionality
+
+USE db_share;
+
+-- Create the cabinet table for device binding
+CREATE TABLE IF NOT EXISTS `bz_cabinet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `cabinet_no` varchar(20) DEFAULT NULL COMMENT 'Station SN',
+  `imei` varchar(20) DEFAULT NULL COMMENT 'IMEI',
+  `state` tinyint(4) DEFAULT '3' COMMENT 'status: 0-offline 1-online 3-un active',
+  `agent_id` int(10) unsigned DEFAULT NULL COMMENT 'Agent Id',
+  `branch_id` int(10) unsigned DEFAULT NULL COMMENT 'Merchant id',
+  `bind_time` timestamp NULL DEFAULT NULL COMMENT 'Merchant bind time',
+  `sim` varchar(32) DEFAULT NULL COMMENT 'sim card iccid',
+  `firmware_version` varchar(32) DEFAULT NULL COMMENT 'firmware Version',
+  `login_ip` varchar(128) DEFAULT NULL COMMENT 'online IP address',
+  `remark` varchar(255) DEFAULT NULL COMMENT 'remark',
+  `signal` int(11) DEFAULT NULL COMMENT 'signal',
+  `signal_level` varchar(8) DEFAULT NULL COMMENT 'Signal Level：0 - Weak 1 - Medium 2 - Strong',
+  `is_screen` tinyint(1) DEFAULT '0' COMMENT 'Screen：0-No 1-Yes',
+  `last_online_time` timestamp NULL DEFAULT NULL COMMENT 'last Online Time',
+  `network_type` varchar(8) DEFAULT NULL COMMENT 'Ntwork Type：4G, WIFI',
+  `location_id` varchar(128) DEFAULT NULL COMMENT 'stripe location ID',
+  `wifi_ssid` varchar(255) DEFAULT NULL COMMENT 'Wifi SSID',
+  `wifi_password` varchar(255) DEFAULT NULL COMMENT 'Wifi password',
+  `volume` varchar(10) DEFAULT NULL COMMENT 'volume',
+  `pinboard_soft_version` varchar(64) DEFAULT NULL COMMENT 'Pinboard Soft Version',
+  `pinboard_hard_version` varchar(64) DEFAULT NULL COMMENT 'Pinboard Hard Version',
+  `vietqr` varchar(1024) DEFAULT NULL COMMENT 'VIETQR',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `uk_cabinet_no` (`cabinet_no`) USING BTREE COMMENT 'UNIQUE Station SN',
+  UNIQUE KEY `uk_imei` (`imei`) USING BTREE COMMENT 'UNIQUE imei'
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='Station';
+
+-- Insert some test data for development (optional)
+-- INSERT INTO `bz_cabinet` (`cabinet_no`, `imei`, `state`, `create_time`, `update_time`) 
+-- VALUES ('TEST001', '123456789012345', 3, NOW(), NOW());
+
+-- Verify table creation
+SELECT 'Cabinet table created successfully' as status;
+DESCRIBE bz_cabinet;
