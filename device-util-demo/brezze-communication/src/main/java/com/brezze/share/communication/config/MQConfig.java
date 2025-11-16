@@ -37,6 +37,7 @@ public class MQConfig {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setMessageConverter(messageConverter());
+//        factory.setAutoStartup(false);
         return factory;
     }
 }

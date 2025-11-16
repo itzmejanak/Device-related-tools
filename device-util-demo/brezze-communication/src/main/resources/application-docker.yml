@@ -28,7 +28,7 @@ spring:
     host: ${REDIS_HOST:redis}
     port: ${REDIS_PORT:6379}
     password: ${REDIS_PASSWORD:}
-    database: ${REDIS_DATABASE:0}
+    database: ${REDIS_DATABASE:3}
   rabbitmq:
     addresses: ${RABBITMQ_HOST:rabbitmq}
     port: ${RABBITMQ_PORT:5672}
@@ -58,9 +58,31 @@ mybatis-plus:
       logic-not-delete-value: 0
   mapper-locations: classpath*:mapper/**/*.xml
 
-# YBT Configuration
+# EMQX MQTT Configuration
+mqtt:
+  broker: ${MQTT_BROKER:nf0e7f22.ala.dedicated.aws.emqxcloud.com}
+  port: ${MQTT_PORT:1883}
+  username: ${MQTT_USERNAME:chargeghar}
+  password: ${MQTT_PASSWORD:5060}
+  clientId: ${MQTT_CLIENT_ID:iotdemo-server}
+  ssl: ${MQTT_SSL:false}
+
+# EMQX Management API Configuration
+emqx:
+  api:
+    url: ${EMQX_API_URL:https://nf0e7f22.ala.dedicated.aws.emqxcloud.com:8443/api/v5}
+    key: ${EMQX_API_KEY:o138f3b1feb110b0}
+    secret: ${EMQX_API_SECRET:IDwov-pD9dqQcC9sHlsHAXj!cwGdi.wZ}
+
+# Product Key for device identification
+productKey: ${PRODUCT_KEY:powerbank}
+
+# Topic Type Configuration (true = with /user, false = without /user)
+topicType: ${TOPIC_TYPE:true}
+
+# YBT Configuration (Legacy - can be disabled)
 ybt:
-  enable: ${YBT_ENABLE:true}
+  enable: ${YBT_ENABLE:false}
   access-key: ${YBT_ACCESS_KEY:}
   access-secret: ${YBT_ACCESS_SECRET:}
   uid: ${YBT_UID:}

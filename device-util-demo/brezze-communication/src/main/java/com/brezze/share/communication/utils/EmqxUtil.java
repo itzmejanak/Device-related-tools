@@ -20,7 +20,7 @@ public class EmqxUtil {
     public static final String PASSWORD = "";
     public static final String PRODUCT_KEY = "powerbank";
     public static final String HOST = "";
-    //以下配置需要定死
+    // The following configurations are fixed values
     public static final String TOPIC_GET = "/%s/%s/user/get";
 
     public static Boolean registerDevice(String host, String username, String password, String deviceName) {
@@ -34,10 +34,10 @@ public class EmqxUtil {
         params.put("password", deviceName);
         try {
             ResponseEntity<String> responseEntity = HttpUtil.post(url, headers, params, String.class);
-            log.info("EMQX创建设备信息：{},{}", deviceName, responseEntity.getBody());
+            log.info("EMQX device creation: {}, {}", deviceName, responseEntity.getBody());
             return true;
         } catch (HttpClientErrorException hce) {
-            log.error("EMQX创建设备信息：{},{}", deviceName, hce.getResponseBodyAsString());
+            log.error("EMQX device creation failed: {}, {}", deviceName, hce.getResponseBodyAsString());
         }
         return false;
     }
@@ -49,10 +49,10 @@ public class EmqxUtil {
         headers.setBasicAuth(username, password);
         try {
             ResponseEntity<String> responseEntity = HttpUtil.get(url, headers, String.class);
-            log.info("EMQX获取设备信息：{},{}", deviceName, responseEntity.getBody());
+            log.info("EMQX device info retrieval: {}, {}", deviceName, responseEntity.getBody());
             return true;
         } catch (HttpClientErrorException hce) {
-            log.error("EMQX获取设备信息：{},{}", deviceName, hce.getResponseBodyAsString());
+            log.error("EMQX device info retrieval failed: {}, {}", deviceName, hce.getResponseBodyAsString());
         }
         return false;
     }
@@ -71,14 +71,18 @@ public class EmqxUtil {
         params.put("payload_encoding", "base64");
         params.put("topic", topic);
         params.put("qos", "1");
-        //设置消息的内容，一定要用base64编码，否则乱码
+        // Message content must be base64 encoded to prevent garbled text
         params.put("payload", Base64Utils.encodeToString(data.getBytes()));
         try {
             ResponseEntity<String> responseEntity = HttpUtil.post(url, headers, params, String.class);
-            log.info("EMQX发送主题消息：{}", responseEntity.getBody());
+            log.info("EMQX topic message published successfully: topic={}, response={}", topic, responseEntity.getBody());
             return true;
         } catch (HttpClientErrorException hce) {
-            log.error("EMQX发送主题消息：{}", hce.getResponseBodyAsString());
+            log.error("EMQX topic message publish failed (HTTP error): topic={}, status={}, error={}", 
+                topic, hce.getStatusCode(), hce.getResponseBodyAsString());
+        } catch (Exception e) {
+            log.error("EMQX topic message publish failed (network error): topic={}, url={}, error={}", 
+                topic, url, e.getMessage());
         }
         return false;
     }

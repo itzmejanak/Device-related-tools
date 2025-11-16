@@ -2,15 +2,15 @@ package com.brezze.share.communication.cabinet.service.impl;
 
 import com.brezze.share.communication.cabinet.service.OrderService;
 import com.brezze.share.communication.cabinet.service.YbtService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Resource
+    @Autowired
     private YbtService ybtService;
 
     @Override

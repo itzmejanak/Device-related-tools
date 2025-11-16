@@ -59,6 +59,11 @@ public class Powerbank {
         this.solenoidValveSwitch = (Integer.toBinaryString(1 << 8 | data[14])).substring(2, 3);
         this.snAsInt = ByteUtils.getJavaInt(this.sn);
         this.snAsString = String.valueOf(this.snAsInt);
+        //没有充电宝时区域码、温度显示0
+        if (data[5] == 0) {
+            this.area = data[4];
+            this.temp = 0;
+        }
 
         if (status > 0X01) {
             message = "孔位异常：0X0" + status;

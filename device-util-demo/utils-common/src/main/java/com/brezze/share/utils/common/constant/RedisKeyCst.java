@@ -5,11 +5,11 @@ public class RedisKeyCst {
     /**
      * 机柜-通讯数据缓存
      */
-    public static final String CABINET_MESSAGE_CACHE = "cabinet:message:";
+    public static final String CABINET_MESSAGE_CACHE_CHECK = "check:";
     /**
-     * 机柜-通讯数据缓存
+     * 机柜-wifi数据缓存
      */
-    public static final String CABINET_MESSAGE_CACHE_CHECK = "cabinet:message:check:";
+    public static final String CABINET_MESSAGE_CACHE_WIFI = "getwifi:";
     /**
      * 弹出间隔
      */

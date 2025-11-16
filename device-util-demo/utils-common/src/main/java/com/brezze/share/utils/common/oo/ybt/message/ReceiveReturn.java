@@ -24,6 +24,7 @@ public class ReceiveReturn extends SerialPortData {
     private int snAsInt;
     private String snAsString;
     private int version;
+    private Integer power;
 
     public int getHole() {
         return hole;
@@ -49,8 +50,9 @@ public class ReceiveReturn extends SerialPortData {
         snAsString = String.valueOf(snAsInt);
         status = data[7];
 
-        if(bytes.length == 14){
+        if (bytes.length == 15) {
             version = data[8];
+            power = data[9];
         }
     }
 
@@ -60,5 +62,9 @@ public class ReceiveReturn extends SerialPortData {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public Integer getPower() {
+        return power;
     }
 }

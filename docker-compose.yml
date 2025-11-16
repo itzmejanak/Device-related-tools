@@ -83,7 +83,7 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_PASSWORD: ${REDIS_PASSWORD:-}
-      REDIS_DATABASE: 0
+      REDIS_DATABASE: ${REDIS_DATABASE:-3}
       
       # RabbitMQ configuration
       RABBITMQ_HOST: rabbitmq
@@ -92,7 +92,24 @@ services:
       RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD:-admin}
       RABBITMQ_VHOST: /
       
-      # YBT configuration
+      # EMQX MQTT Configuration
+      MQTT_BROKER: ${MQTT_BROKER:-nf0e7f22.ala.dedicated.aws.emqxcloud.com}
+      MQTT_PORT: ${MQTT_PORT:-1883}
+      MQTT_USERNAME: ${MQTT_USERNAME:-chargeghar}
+      MQTT_PASSWORD: ${MQTT_PASSWORD:-5060}
+      MQTT_CLIENT_ID: ${MQTT_CLIENT_ID:-iotdemo-server}
+      MQTT_SSL: ${MQTT_SSL:-false}
+      
+      # EMQX Management API Configuration
+      EMQX_API_URL: ${EMQX_API_URL:-https://nf0e7f22.ala.dedicated.aws.emqxcloud.com:8443/api/v5}
+      EMQX_API_KEY: ${EMQX_API_KEY:-o138f3b1feb110b0}
+      EMQX_API_SECRET: ${EMQX_API_SECRET:-IDwov-pD9dqQcC9sHlsHAXj!cwGdi.wZ}
+      
+      # Product Key and Topic Configuration
+      PRODUCT_KEY: ${PRODUCT_KEY:-powerbank}
+      TOPIC_TYPE: ${TOPIC_TYPE:-true}
+      
+      # YBT configuration (Legacy - Disabled)
       YBT_ENABLE: ${YBT_ENABLE:-false}
       YBT_ACCESS_KEY: ${YBT_ACCESS_KEY:-}
       YBT_ACCESS_SECRET: ${YBT_ACCESS_SECRET:-}

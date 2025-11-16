@@ -25,7 +25,7 @@ log:
 
 #  倍斯特
 ybt:
-  enable: true
+  enable: false
   access-key:
   access-secret:
   uid:

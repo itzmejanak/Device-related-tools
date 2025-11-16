@@ -3,6 +3,7 @@ package com.brezze.share.communication.cabinet.service;
 import com.brezze.share.communication.oo.dto.ConnectTokenDTO;
 import com.brezze.share.communication.oo.dto.DeviceDetailDTO;
 import com.brezze.share.communication.oo.dto.DeviceStatusDTO;
+import com.brezze.share.utils.common.oo.ybt.message.ReceiveWifi;
 import com.brezze.share.utils.common.oo.ybt.req.CmdYbtREQ;
 
 public interface YbtService {
@@ -20,6 +21,8 @@ public interface YbtService {
      * @param deviceName
      */
     void checkAll(String deviceName);
+
+    DeviceDetailDTO getDeviceDetail(String deviceName) throws Exception;
 
     /**
      * 测试工具-查询明细
@@ -61,6 +64,8 @@ public interface YbtService {
      */
     void popUpByIndex(CmdYbtREQ req);
 
+    void checkSign(Object valid, String sign) throws Exception;
+
     /**
      * 设备指令下发
      *
@@ -84,4 +89,10 @@ public interface YbtService {
      * @return
      */
     ConnectTokenDTO connectToken(String locationId);
+
+    String getVersionInfo(String appUuid, Boolean releaseModel);
+
+    void getWifi(String deviceName);
+
+    ReceiveWifi getWifiMessage(String deviceName);
 }

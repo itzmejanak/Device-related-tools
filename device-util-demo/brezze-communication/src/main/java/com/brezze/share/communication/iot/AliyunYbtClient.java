@@ -8,10 +8,10 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.qpid.jms.JmsConnection;
 import org.apache.qpid.jms.JmsConnectionListener;
 import org.apache.qpid.jms.message.JmsInboundMessageDispatch;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.jms.*;
@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class AliyunYbtClient implements CommandLineRunner {
 
-    @Resource
+    @Autowired
     private YbtConfig ybtConfig;
 
     //业务处理异步线程池，线程池参数可以根据您的业务特点调整，或者您也可以用其他异步方式处理接收到的消息。

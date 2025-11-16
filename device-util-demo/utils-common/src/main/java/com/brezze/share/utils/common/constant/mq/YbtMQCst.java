@@ -28,7 +28,10 @@ public class YbtMQCst {
      * 充电宝弹出-孔位延迟弹出
      */
     public static final String QUEUE_DELAY_PB_OPEN_LOCK = PREFIX + "delay.pb.open.lock";
-
+    /**
+     * 充电宝归还
+     */
+    public static final String QUEUE_PB_RETURN = PREFIX + "pb.return";
     /**********************************************队列****************************************************************/
 
     /**********************************************路由****************************************************************/
@@ -44,5 +47,9 @@ public class YbtMQCst {
      * 充电宝弹出-孔位延迟弹出
      */
     public static final String ROUTING_DELAY_PB_OPEN_LOCK = PREFIX + "delay.pb.open.lock";
+    /**
+     * 充电宝归还
+     */
+    public static final String ROUTING_PB_RETURN = PREFIX + "pb.return";
     /**********************************************路由****************************************************************/
 }

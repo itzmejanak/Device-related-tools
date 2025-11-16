@@ -2,6 +2,7 @@ package com.brezze.share.utils.common.redis;
 
 import com.brezze.share.utils.common.string.StringUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -9,7 +10,6 @@ import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -20,19 +20,14 @@ public class RedisUtil {
     /**
      * 前缀
      */
-    public static final String PREFIX = "brezze-saas-bod:";
-
-    /**
-     * 租户前缀
-     */
-    public static final String PREFIX_P = PREFIX + "p:";
+    public static final String PREFIX = "";
 
     /**
      * 最大扫码数量
      */
     public static final int SCAN_MAX = 10000;
 
-    @Resource
+    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     /**

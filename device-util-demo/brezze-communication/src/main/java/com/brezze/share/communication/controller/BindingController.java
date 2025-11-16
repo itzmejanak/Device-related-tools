@@ -11,24 +11,27 @@ import com.brezze.share.utils.common.number.NumberUtil;
 import com.brezze.share.utils.common.result.Rest;
 import com.brezze.share.utils.common.string.StringUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.List;
 
-@Api(tags = "公共接口")
+@Api(tags = "Binding interface")
 @ApiSupport(author = "penf", order = 1)
 @Slf4j
 @RestController
 @RequestMapping("")
 public class BindingController {
 
-    @Resource
+    @Autowired
     private CabinetService cabinetService;
 
     @ApiOperation(httpMethod = "POST", value = "Bind station SN and IMEI", notes = "")
@@ -45,7 +48,7 @@ public class BindingController {
                 || StringUtil.isEmpty(imei)) {
             return Rest.failure(Hint.BAD_PARAMETER);
         }
-        if (!NumberUtil.isNumeric(imei) || imei.length() != 15) {
+        if (!NumberUtil.isNumeric(imei) && imei.length() != 15) {
             return Rest.failure(Hint.COMMUNICATION_DEVICE_ERROR_IMEI_FORMAT);
         }
         LambdaQueryWrapper<Cabinet> wrapper = new LambdaQueryWrapper<>();
@@ -65,7 +68,7 @@ public class BindingController {
                     .setState(CabinetCst.UNACTIVE)
                     .setVietqr(vietqr);
             cabinetService.saveOrUpdate(cabinet);
-            return Rest.success();
+            return Rest.failure(Hint.SUCCESS);
         }
         if (StringUtil.isNotEmpty(cabinet.getCabinetNo()) && !cabinet.getCabinetNo().equalsIgnoreCase(cabinet.getImei())) {
             return Rest.failure(Hint.API_DEVICE_BIND_REPEAT);
@@ -90,7 +93,7 @@ public class BindingController {
         }
         LambdaQueryWrapper<Cabinet> cabinetWrapper = new LambdaQueryWrapper<>();
         if (StringUtil.isNotEmpty(imei)) {
-            if (!NumberUtil.isNumeric(imei) || imei.length() != 15) {
+            if (!NumberUtil.isNumeric(imei) && imei.length() != 15) {
                 return Rest.failure(Hint.COMMUNICATION_DEVICE_ERROR_IMEI_FORMAT);
             }
             cabinetWrapper.eq(Cabinet::getImei, imei);

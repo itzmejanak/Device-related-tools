@@ -14,4 +14,17 @@ import com.brezze.share.communication.cabinet.entity.Cabinet;
  */
 public interface CabinetService extends IService<Cabinet> {
 
+    /**
+     * Obtain the device's IMEI
+     *
+     * Modify according to your actual database structure
+     *
+     *
+     *
+     * @param deviceName Device SN/Device IMEI
+     * @return Device IMEI
+     */
+    String getImei(String deviceName);
+
+    void powerBankReturn(String deviceName, String pbNo, Integer pos, Integer bc);
 }

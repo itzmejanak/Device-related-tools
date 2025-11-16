@@ -23,7 +23,7 @@ COPY brezze-communication/src ./brezze-communication/src
 RUN mvn clean package -DskipTests -B
 
 # Stage 2: Runtime stage
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:8-jre-alpine
 
 # Install required packages for potential debugging and health checks
 RUN apk add --no-cache curl tzdata
@@ -70,7 +70,7 @@ ENV DB_PASSWORD=123456
 ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
 ENV REDIS_PASSWORD=
-ENV REDIS_DATABASE=0
+ENV REDIS_DATABASE=3
 
 # RabbitMQ configuration
 ENV RABBITMQ_HOST=rabbitmq
@@ -79,8 +79,25 @@ ENV RABBITMQ_USERNAME=admin
 ENV RABBITMQ_PASSWORD=admin
 ENV RABBITMQ_VHOST=/
 
-# YBT configuration (can be overridden)
-ENV YBT_ENABLE=true
+# EMQX MQTT Configuration
+ENV MQTT_BROKER=nf0e7f22.ala.dedicated.aws.emqxcloud.com
+ENV MQTT_PORT=1883
+ENV MQTT_USERNAME=chargeghar
+ENV MQTT_PASSWORD=5060
+ENV MQTT_CLIENT_ID=iotdemo-server
+ENV MQTT_SSL=false
+
+# EMQX Management API Configuration
+ENV EMQX_API_URL=https://nf0e7f22.ala.dedicated.aws.emqxcloud.com:8443/api/v5
+ENV EMQX_API_KEY=o138f3b1feb110b0
+ENV EMQX_API_SECRET=IDwov-pD9dqQcC9sHlsHAXj!cwGdi.wZ
+
+# Product Key and Topic Configuration
+ENV PRODUCT_KEY=powerbank
+ENV TOPIC_TYPE=true
+
+# YBT configuration (Legacy - disabled by default)
+ENV YBT_ENABLE=false
 ENV YBT_ACCESS_KEY=
 ENV YBT_ACCESS_SECRET=
 ENV YBT_UID=
