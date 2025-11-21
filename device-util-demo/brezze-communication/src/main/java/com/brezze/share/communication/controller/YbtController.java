@@ -1,5 +1,6 @@
 package com.brezze.share.communication.controller;
 
+import com.brezze.share.communication.cabinet.service.CabinetService;
 import com.brezze.share.communication.cabinet.service.YbtService;
 import com.brezze.share.utils.common.json.GsonUtil;
 import com.brezze.share.utils.common.oo.ybt.req.CmdYbtREQ;
@@ -21,13 +22,20 @@ public class YbtController {
 
     @Resource
     private YbtService ybtService;
+    
+    @Resource
+    private CabinetService cabinetService;
 
     @ApiOperationSupport(order = 99)
     @ApiOperation(httpMethod = "GET", produces = "application/json", value = "Get Station Detail", notes = "")
     @GetMapping(value = "/communication/ybt/check-all")
     public void checkAll(HttpServletResponse response, String scanNo) throws Exception {
 
-        Rest rest = Rest.success(ybtService.getCheckMessage(scanNo));
+        // Get IMEI from cabinet_no or use scanNo directly if not found
+        String imei = cabinetService.getImei(scanNo);
+        String deviceName = (imei != null) ? imei : scanNo;
+
+        Rest rest = Rest.success(ybtService.getCheckMessage(deviceName));
 
         printResponse(response, GsonUtil.toJson(rest));
     }
