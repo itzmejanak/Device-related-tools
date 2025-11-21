@@ -5,7 +5,7 @@ import com.brezze.share.communication.config.YbtConfig;
 import com.brezze.share.communication.oo.dto.ConnectTokenDTO;
 import com.brezze.share.communication.oo.dto.DeviceDetailDTO;
 import com.brezze.share.communication.oo.dto.DeviceStatusDTO;
-import com.brezze.share.communication.utils.IotUtil;
+import com.brezze.share.communication.service.MqttService;
 import com.brezze.share.communication.utils.pay.StripePay;
 import com.brezze.share.utils.common.constant.RedisKeyCst;
 import com.brezze.share.utils.common.constant.mq.YbtMQCst;
@@ -35,6 +35,8 @@ public class YbtServiceImpl implements YbtService {
     private RedisUtil redisUtil;
     @Resource
     private YbtConfig ybtConfig;
+    @Resource
+    private MqttService mqttService;
     @Resource
     private RabbitTemplate rabbitTemplate;
 
@@ -131,7 +133,7 @@ public class YbtServiceImpl implements YbtService {
 
     @Override
     public void sendCmd(String deviceName, String data) {
-        IotUtil.pubGetTopicMsg(ybtConfig.getAccessKey(), ybtConfig.getAccessSecret(), ybtConfig.getRegionId(), ybtConfig.getIotInstanceId(), data, ybtConfig.getProductKey(), deviceName);
+        mqttService.publish(deviceName, data);
     }
 
     @Override

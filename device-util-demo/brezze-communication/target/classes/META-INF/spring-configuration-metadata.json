@@ -6,6 +6,11 @@
       "sourceType": "com.brezze.share.communication.config.SwaggerConfig"
     },
     {
+      "name": "mqtt",
+      "type": "com.brezze.share.communication.config.MqttConfig",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
+    },
+    {
       "name": "ybt",
       "type": "com.brezze.share.communication.config.YbtConfig",
       "sourceType": "com.brezze.share.communication.config.YbtConfig"
@@ -56,6 +61,36 @@
       "name": "api-document.version",
       "type": "java.lang.String",
       "sourceType": "com.brezze.share.communication.config.SwaggerConfig"
+    },
+    {
+      "name": "mqtt.broker",
+      "type": "java.lang.String",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
+    },
+    {
+      "name": "mqtt.client-id",
+      "type": "java.lang.String",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
+    },
+    {
+      "name": "mqtt.password",
+      "type": "java.lang.String",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
+    },
+    {
+      "name": "mqtt.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
+    },
+    {
+      "name": "mqtt.ssl",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
+    },
+    {
+      "name": "mqtt.username",
+      "type": "java.lang.String",
+      "sourceType": "com.brezze.share.communication.config.MqttConfig"
     },
     {
       "name": "ybt.access-key",
