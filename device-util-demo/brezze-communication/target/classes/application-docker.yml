@@ -28,7 +28,7 @@ spring:
     host: ${REDIS_HOST:redis}
     port: ${REDIS_PORT:6379}
     password: ${REDIS_PASSWORD:}
-    database: ${REDIS_DATABASE:0}
+    database: ${REDIS_DATABASE:3}
   rabbitmq:
     addresses: ${RABBITMQ_HOST:rabbitmq}
     port: ${RABBITMQ_PORT:5672}
@@ -44,6 +44,41 @@ spring:
           enabled: true
           max-attempts: 3
           initial-interval: 2000
+
+# MyBatis Plus Configuration (REQUIRED for database operations)
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:mapper/**/*.xml
+
+# EMQX MQTT Configuration
+mqtt:
+  broker: ${MQTT_BROKER:}
+  port: ${MQTT_PORT:1883}
+  username: ${MQTT_USERNAME:}
+  password: ${MQTT_PASSWORD:}
+  clientId: ${MQTT_CLIENT_ID:}
+  ssl: ${MQTT_SSL:false}
+
+# EMQX Management API Configuration
+emqx:
+  api:
+    url: ${EMQX_API_URL:}
+    key: ${EMQX_API_KEY:}
+    secret: ${EMQX_API_SECRET:}
+
+# Product Key for device identification
+productKey: ${PRODUCT_KEY:}
+
+# Topic Type Configuration (true = with /user, false = without /user)
+topicType: ${TOPIC_TYPE:true}
 
 # YBT Configuration
 ybt:
