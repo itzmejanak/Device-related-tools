@@ -8,6 +8,7 @@
       />
       <div class="title" @click="goToInputRack">返回</div>
     </div>
+
     <div class="tab_set">
       <div
         class="tab_title"
@@ -131,18 +132,309 @@
           {{ item.value }}
         </div>
       </div>
+
+      <!-- 常用命令界面 -->
+      <div v-show="tabValue == 3" class="command-container">
+        <!-- 自定义命令输入框 - 置顶 -->
+        <div class="command-input-section">
+          <h3>自定义命令</h3>
+          <van-field
+            v-model="customCommand"
+            type="textarea"
+            placeholder='请输入JSON格式的命令，例如：{"cmd":"get_version"}'
+            rows="3"
+            autosize
+            class="command-textarea"
+          />
+          <van-button
+            type="primary"
+            block
+            @click="sendCustomCommand"
+            :disabled="!isValidJson"
+            class="send-command-btn"
+          >
+            发送命令
+          </van-button>
+          <div v-if="customCommand && !isValidJson" class="error-tip">
+            JSON格式不正确，请检查
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>WiFi设置</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="showWifiDialog('business')"
+            >
+              商务版设置WiFi
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="showWifiDialog('popular')"
+            >
+              普及版设置WiFi
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>网络优先级</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendPriorityCommand('wifi')"
+            >
+              设置WiFi优先
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendPriorityCommand('4g')"
+            >
+              设置4G优先
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>声音设置</h3>
+          <div class="command-buttons">
+            <van-field
+              v-model="soundVolume"
+              type="number"
+              placeholder="请输入音量(0-100)"
+              label="音量"
+            />
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendSoundCommand"
+            >
+              设置音量
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>漫游设置</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendRoamingCommand('open')"
+            >
+              开启漫游
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendRoamingCommand('close')"
+            >
+              关闭漫游
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>机芯数据上报</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendBufferUploadCommand('true')"
+            >
+              开启上报
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendBufferUploadCommand('false')"
+            >
+              关闭上报
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>WiFi开关（带屏）</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendWifiSwitchCommand('open')"
+            >
+              开启WiFi
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendWifiSwitchCommand('close')"
+            >
+              关闭WiFi
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>APN设置</h3>
+          <div class="command-buttons">
+            <van-field
+              v-model="apnSetting"
+              placeholder="请输入APN"
+              label="APN"
+            />
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendApnCommand"
+            >
+              设置APN
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>日志设置</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendLogCommand('open')"
+            >
+              开启本地日志
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendLogCommand('close')"
+            >
+              关闭本地日志
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('upload_app_log')"
+            >
+              上传APP日志
+            </van-button>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3>系统命令</h3>
+          <div class="command-buttons">
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('get_version')"
+            >
+              获取APK版本
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('apk_restart')"
+            >
+              APK重启
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('upload_screen_capture')"
+            >
+              屏幕截图
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('reboot')"
+            >
+              机柜重启
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('upload_all')"
+            >
+              HTTP整机上报
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('push_version_publish')"
+            >
+              下发升级
+            </van-button>
+            <van-button
+              class="command-button"
+              type="primary"
+              block
+              @click="sendCommand('load_ad')"
+            >
+              更新广告
+            </van-button>
+          </div>
+        </div>
+      </div>
+
       <div
-        v-show="tabValue == 3 || (tabValue == 2 && list2.length == 0)"
+        v-show="tabValue == 2 && list2.length == 0"
         class="blank_div"
       >
         暂无数据...
       </div>
     </div>
 
+    <!-- WiFi设置弹窗 -->
+    <van-dialog
+      v-model="showWifiDialogFlag"
+      :title="wifiDialogTitle"
+      show-cancel-button
+      @confirm="confirmWifiSetting"
+    >
+      <van-field
+        v-model="wifiForm.name"
+        placeholder="请输入WiFi名称"
+        label="WiFi名称"
+      />
+      <van-field
+        v-model="wifiForm.password"
+        placeholder="请输入WiFi密码"
+        label="WiFi密码"
+        type="password"
+      />
+    </van-dialog>
+
     <van-overlay :show="showMask" z-index="99999999">
       <div class="wrapper">
         <van-loading type="spinner" color="#0094ff" vertical
-          >刷新中...</van-loading
+        >刷新中...
+        </van-loading
         >
       </div>
     </van-overlay>
@@ -151,16 +443,17 @@
 
 <script>
 import Device from '../../assets/js/api/device'
+
 export default {
-  data () {
+  data() {
     return {
       showMask: false, // loading遮罩层
       tabName: [
-        { value: 1, id: 1, label: '串口1', isCheck: true },
-        { value: 2, id: 2, label: '串口2', isCheck: false },
-        { value: 3, id: 3, label: '常用命令', isCheck: false },
-        { value: 4, id: 4, label: '孔位弹', isCheck: false },
-        { value: 1, id: 5, label: '刷新', isCheck: false }
+        {value: 1, id: 1, label: '串口1', isCheck: true},
+        {value: 2, id: 2, label: '串口2', isCheck: false},
+        {value: 3, id: 3, label: '常用命令', isCheck: false},
+        {value: 4, id: 4, label: '孔位弹', isCheck: false},
+        {value: 1, id: 5, label: '刷新', isCheck: false}
       ], // tab栏
       tabValue: '1', // tab值
       holeSite: [], //孔位按钮
@@ -175,6 +468,20 @@ export default {
       online2: 0, // 在线孔位
       abnormal2: 0, // 异常孔位
       imeis: '', // IMEI码
+
+      // 自定义命令输入框
+      customCommand: '',
+
+      // 常用命令相关数据
+      showWifiDialogFlag: false,
+      wifiDialogType: '', // 'business' 或 'popular'
+      wifiForm: {
+        name: '',
+        password: ''
+      },
+      soundVolume: '100',
+      apnSetting: '',
+
       datas: {
         // 充电宝数据样例
         data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 128],
@@ -182,6 +489,7 @@ export default {
         index: 8, //孔位
         status: 0, // 状态 二进制字节转成16进制
         undefined1: 0,
+        undefined2: 0,
         batteryVol: 0, // 电芯电压/10
         area: 0, //区域码
         sn: [0, 0, 0, 0],
@@ -195,61 +503,28 @@ export default {
         snAsString: '0', //sn
         putaway: false,
         message: 'NONE'
-      },
-
-      showCommandDialog: false,
-      currentCommandType: '',
-      commandForm: {
-        param1: '',
-        param2: ''
-      },
-      commandTypes: {
-        wifi: {
-          title: 'WiFi设置',
-          fields: [
-            { label: 'WiFi名称', key: 'param1', placeholder: '请输入WiFi名称', type: 'text' },
-            { label: 'WiFi密码', key: 'param2', placeholder: '请输入WiFi密码', type: 'password' }
-          ],
-          required: ['param1', 'param2']
-        },
-        priority: {
-          title: '网络优先级',
-          fields: [
-            {
-              label: '优先级',
-              key: 'param1',
-              type: 'radio',
-              options: [
-                { label: 'WiFi优先', value: 'wifi' },
-                { label: '4G优先', value: '4g' }
-              ]
-            }
-          ],
-          required: ['param1']
-        },
-        sound: {
-          title: '声音设置',
-          fields: [
-            {
-              label: '音量大小',
-              key: 'param1',
-              type: 'slider',
-              min: 0,
-              max: 100,
-              step: 1
-            }
-          ],
-          required: ['param1']
-        },
-        version: {
-          title: '获取版本',
-          noForm: true // 无需表单的指令
-        }
       }
     }
   },
-  mounted () {
-    // this.scanNo = '10120000'
+  computed: {
+    wifiDialogTitle() {
+      return this.wifiDialogType === 'business' ? '商务版设置WiFi' : '普及版设置WiFi'
+    },
+
+    // 检查JSON格式是否有效
+    isValidJson() {
+      if (!this.customCommand.trim()) {
+        return false
+      }
+      try {
+        JSON.parse(this.customCommand)
+        return true
+      } catch (error) {
+        return false
+      }
+    }
+  },
+  mounted() {
     this.scanNo = this.$route.query.sno
     if (!this.scanNo) {
       this.goToInputRack()
@@ -259,7 +534,7 @@ export default {
   },
   methods: {
     // 获取详情
-    getDevice () {
+    getDevice() {
       this.list1 = []
       this.list2 = []
       this.hole = 0
@@ -268,7 +543,7 @@ export default {
       this.online2 = 0
       this.abnormal2 = 0
       this.showMask = true
-      Device.getDevice({ scanNo: this.scanNo }).then(res => {
+      Device.getDevice({scanNo: this.scanNo}).then(res => {
         if (res.code == 0) {
           res.data.data.pinboards.map(item => {
             return {
@@ -284,10 +559,10 @@ export default {
           let lists = res.data.data.powerbanks
           getpinboards.forEach(item => {
             lists.forEach(items => {
-              if (item.io === 0 && item.index === items.pinboardIndex) {
+              if (item.io == 0 && item.index == items.pinboardIndex) {
                 this.list1.push(items)
               }
-              if (item.io === 1 && item.index === items.pinboardIndex) {
+              if (item.io == 1 && item.index == items.pinboardIndex) {
                 this.list2.push(items)
               }
             })
@@ -298,14 +573,14 @@ export default {
             if (item.snAsInt > 0) {
               this.online1 += 1
             }
-            if (item.snAsInt === 0) {
+            if (item.snAsInt == 0) {
               item.snAsString = '--'
             }
             if (item.status > 1) {
               this.abnormal1 += 1
             }
             item.status2 = item.status.toString(16).toUpperCase()
-            if (item.status2.length === 1) {
+            if (item.status2.length == 1) {
               item.status2 = '0' + item.status2
             }
             if (
@@ -319,32 +594,34 @@ export default {
             ) {
               item.softVersion = 'V10' + item.softVersion
             }
-            if (item.solenoidValveSwitch === 0) {
+            if (item.solenoidValveSwitch == 0) {
               item.switch1 = '闭合'
             } else {
               item.switch1 = '断开'
             }
-            if (item.microSwitch === 0) {
+            if (item.microSwitch == 0) {
               item.switch2 = '闭合'
             } else {
               item.switch2 = '断开'
             }
             item.current = (item.current / 10).toFixed(1)
             item.voltage = (item.voltage / 10).toFixed(1)
-            item.batteryVol = (item.batteryVol / 10).toFixed(1)
+            if (item.batteryVol > 0){
+              item.batteryVol = ((item.batteryVol + 200) / 100).toFixed(1)
+            }
           })
           this.list2.forEach(item => {
             if (item.snAsInt > 0) {
               this.online2 += 1
             }
-            if (item.snAsInt === 0) {
+            if (item.snAsInt == 0) {
               item.snAsString = '--'
             }
             if (item.status > 1) {
               this.abnormal2 += 1
             }
             item.status2 = item.status.toString(16).toUpperCase()
-            if (item.status2.length === 1) {
+            if (item.status2.length == 1) {
               item.status2 = '0' + item.status2
             }
             if (
@@ -358,55 +635,57 @@ export default {
             ) {
               item.softVersion = 'V10' + item.softVersion
             }
-            if (item.solenoidValveSwitch === 0) {
+            if (item.solenoidValveSwitch == 0) {
               item.switch1 = '闭合'
             } else {
               item.switch1 = '断开'
             }
-            if (item.microSwitch === 0) {
+            if (item.microSwitch == 0) {
               item.switch2 = '闭合'
             } else {
               item.switch2 = '断开'
             }
             item.current = (item.current / 10).toFixed(1)
             item.voltage = (item.voltage / 10).toFixed(1)
-            item.batteryVol = (item.batteryVol / 10).toFixed(1)
+            if (item.batteryVol > 0){
+              item.batteryVol = ((item.batteryVol + 200) / 100).toFixed(1)
+            }
           })
         }
         this.showMask = false
       })
     },
     //生成孔位
-    getData () {
+    getData() {
       let arr = []
       for (let i = 0; i < 36; i++) {
-        arr.push({ value: `${i + 1}` })
+        arr.push({value: `${i + 1}`})
       }
       this.holeSite = arr
     },
     // 返回扫码页
-    goToInputRack () {
+    goToInputRack() {
       this.$router.push({
         name: 'Start'
       })
     },
     //切换tab栏
-    switchTab (id, value) {
+    switchTab(id, value) {
       this.tabName.forEach(item => {
-        if (id === item.id) {
+        if (id == item.id) {
           item.isCheck = true
         } else {
           item.isCheck = false
         }
       })
       this.tabValue = value
-      if (id === 5) {
+      if (id == 5) {
         this.tabName = this.$options.data.call(this).tabName
         this.getDevice()
       }
     },
     // SN弹出
-    popupSn (item) {
+    popupSn(item) {
       if (item.snAsInt != 0) {
         const params = {
           pbNo: item.snAsInt,
@@ -416,7 +695,6 @@ export default {
           if (res.code == 0) {
             this.global.toast(res.message)
             item.snAsInt = 0
-            // this.getDevice()
           } else {
             this.global.toast(res.message)
           }
@@ -424,7 +702,7 @@ export default {
       }
     },
     //孔位弹出
-    popupHole (item, e) {
+    popupHole(item, e) {
       const params = {
         io: e,
         cabinetNo: this.imeis,
@@ -432,7 +710,6 @@ export default {
       }
       Device.popupHole(params).then(res => {
         if (res.code == 0) {
-          // this.getDevice()
           this.global.toast(res.message)
         } else {
           this.global.toast(res.message)
@@ -440,102 +717,207 @@ export default {
       })
     },
 
-    // 组装请求参数
-    buildCommandData() {
-      const { currentCommandType, commandForm, deviceVersion } = this;
-      const base = { cabinetNo: this.imeis || this.scanNo };
-
-      switch(currentCommandType) {
-        case 'setWifi':
-          return {
-            ...base,
-            data: JSON.stringify({
-              cmd: "setWifi",
-              username: commandForm.param1,
-              password: commandForm.param2
-            })
-          };
-        case 'set_wifi':
-          return {
-            ...base,
-            data: JSON.stringify({
-              cmd: "set_wifi",
-              name: commandForm.param1,
-              password: commandForm.param2
-            })
-          };
-        case 'priority':
-          return {
-            ...base,
-            data: JSON.stringify({
-              cmd: "setMode",
-              data: commandForm.param1
-            })
-          };
-
-        case 'sound':
-          return {
-            ...base,
-            data: JSON.stringify({
-              cmd: "volume",
-              data: commandForm.param1.toString()
-            })
-          };
-
-        case 'version':
-          return {
-            ...base,
-            data: JSON.stringify({
-              cmd: "get_version"
-            })
-          };
-
-        default:
-          return base;
+    // 发送自定义命令
+    sendCustomCommand() {
+      if (!this.isValidJson) {
+        this.global.toast('请输入有效的JSON格式命令')
+        return
       }
-    },
 
-    // 提交设备指令
-    async submitDeviceCommand() {
-      try {
-        const commandConfig = this.commandTypes[this.currentCommandType];
+      if (!this.imeis && !this.scanNo) {
+        this.global.toast('设备信息不存在')
+        return
+      }
 
-        // 验证必填字段
-        if (commandConfig.required) {
-          for (const field of commandConfig.required) {
-            if (!this.commandForm[field]) {
-              this.global.toast(`请输入${commandConfig.fields.find(f => f.key === field).label}`);
-              return;
-            }
-          }
-        }
+      this.showMask = true
+      const params = {
+        cabinetNo: this.imeis || this.scanNo,
+        data: this.customCommand
+      }
 
-        this.showMask = true;
-        const params = this.buildCommandData();
-        const res = await Device.sendCommand(params);
-
-        if (res.code === 0) {
-          this.global.toast(`${commandConfig.title}成功`);
-          // 如果是获取版本，处理返回数据
-          if (this.currentCommandType === 'version') {
-            console.log('版本信息:', res.data);
-          }
+      Device.sendCmd(params).then(res => {
+        if (res.code == 0) {
+          this.global.toast('命令发送成功')
+          this.customCommand = '' // 清空输入框
         } else {
-          this.global.toast(res.message || `${commandConfig.title}失败`);
+          this.global.toast(res.message || '命令发送失败')
         }
-      } catch (error) {
-        this.global.toast('网络错误，请重试');
-        console.error('指令发送错误:', error);
-      } finally {
-        this.showMask = false;
-        this.showCommandDialog = false;
-      }
+      }).catch(error => {
+        this.global.toast('网络错误，请重试')
+        console.error('自定义命令发送错误:', error)
+      }).finally(() => {
+        this.showMask = false
+      })
     },
 
-    // 直接执行的指令（无需表单）
-    executeDirectCommand(type) {
-      this.currentCommandType = type;
-      this.submitDeviceCommand();
+    // 常用命令相关方法
+    showWifiDialog(type) {
+      this.wifiDialogType = type
+      this.wifiForm.name = ''
+      this.wifiForm.password = ''
+      this.showWifiDialogFlag = true
+    },
+
+    confirmWifiSetting() {
+      if (!this.wifiForm.name || !this.wifiForm.password) {
+        this.global.toast('请输入WiFi名称和密码')
+        return
+      }
+
+      let cmdData = {}
+      if (this.wifiDialogType === 'business') {
+        cmdData = {
+          cmd: "set_wifi",
+          name: this.wifiForm.name,
+          password: this.wifiForm.password
+        }
+      } else {
+        cmdData = {
+          cmd: "setWifi",
+          username: this.wifiForm.name,
+          password: this.wifiForm.password
+        }
+      }
+
+      this.sendCommandData(cmdData, 'WiFi设置')
+    },
+
+    sendPriorityCommand(mode) {
+      const cmdData = {
+        cmd: "setMode",
+        data: mode
+      }
+      this.sendCommandData(cmdData, `设置${mode.toUpperCase()}优先`)
+    },
+
+    sendSoundCommand() {
+      if (!this.soundVolume) {
+        this.global.toast('请输入音量值')
+        return
+      }
+      const volume = parseInt(this.soundVolume)
+      if (volume < 0 || volume > 100) {
+        this.global.toast('音量值应在0-100之间')
+        return
+      }
+
+      const cmdData = {
+        cmd: "volume",
+        data: volume.toString()
+      }
+      this.sendCommandData(cmdData, '声音设置')
+    },
+
+    sendRoamingCommand(action) {
+      const cmdData = {
+        cmd: action === 'open' ? "open_roam" : "close_roam"
+      }
+      this.sendCommandData(cmdData, `${action === 'open' ? '开启' : '关闭'}漫游`)
+    },
+
+    sendApnCommand() {
+      if (!this.apnSetting) {
+        this.global.toast('请输入APN')
+        return
+      }
+      const cmdData = {
+        cmd: "set_apn",
+        data: this.apnSetting
+      }
+      this.sendCommandData(cmdData, 'APN设置')
+    },
+
+    sendLogCommand(action) {
+      const cmdData = {
+        cmd: action === 'open' ? "open_log_recording" : "close_log_recording"
+      }
+      this.sendCommandData(cmdData, `${action === 'open' ? '开启' : '关闭'}本地日志`)
+    },
+
+    sendBufferUploadCommand(action) {
+      const cmdData = {
+        cmd: "buffer_upload",
+        data: action === 'true' ? "true" : "false"
+      }
+      this.sendCommandData(cmdData, `${action === 'true' ? '开启' : '关闭'}机芯数据上报`)
+    },
+
+    sendWifiSwitchCommand(action) {
+      const cmdData = {
+        cmd: action === 'open' ? "open_wifi" : "close_wifi"
+      }
+      this.sendCommandData(cmdData, `${action === 'true' ? '开启' : '关闭'}WiFi`)
+    },
+
+    sendCommand(cmdType) {
+      let cmdData = {}
+      switch (cmdType) {
+        case 'get_version':
+          cmdData = { cmd: "get_version" }
+          break
+        case 'upload_app_log':
+          cmdData = { cmd: "upload_app_log" }
+          break
+        case 'apk_restart':
+          cmdData = { cmd: "apk_restart" }
+          break
+        case 'upload_screen_capture':
+          cmdData = { cmd: "upload_screen_capture" }
+          break
+        case 'reboot':
+          cmdData = { cmd: "reboot" }
+          break
+        case 'upload_all':
+          cmdData = { cmd: "upload_all" }
+          break
+        case 'push_version_publish':
+          cmdData = { cmd: "push_version_publish" }
+          break
+        case 'load_ad':
+          cmdData = { cmd: "load_ad" }
+          break
+      }
+      this.sendCommandData(cmdData, this.getCommandName(cmdType))
+    },
+
+    getCommandName(cmdType) {
+      const names = {
+        'get_version': '获取APK版本',
+        'upload_app_log': '上传APP日志',
+        'apk_restart': 'APK重启',
+        'upload_screen_capture': '屏幕截图',
+        'reboot': '机柜重启',
+        'upload_all': 'HTTP整机上报',
+        'push_version_publish': '下发升级',
+        'load_ad': '更新广告'
+      }
+      return names[cmdType] || '命令'
+    },
+
+    sendCommandData(cmdData, commandName) {
+      if (!this.imeis && !this.scanNo) {
+        this.global.toast('设备信息不存在')
+        return
+      }
+
+      this.showMask = true
+      const params = {
+        cabinetNo: this.imeis || this.scanNo,
+        data: JSON.stringify(cmdData)
+      }
+
+      Device.sendCmd(params).then(res => {
+        if (res.code == 0) {
+          this.global.toast(`${commandName}成功`)
+        } else {
+          this.global.toast(res.message || `${commandName}失败`)
+        }
+      }).catch(error => {
+        this.global.toast('网络错误，请重试')
+        console.error('指令发送错误:', error)
+      }).finally(() => {
+        this.showMask = false
+      })
     }
   }
 }
@@ -551,7 +933,6 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
-    // position: fixed;
     border-bottom: 1px solid #000;
 
     img {
@@ -566,6 +947,7 @@ export default {
       color: #000;
     }
   }
+
   .tab_set {
     width: calc(100% - 32px);
     margin-left: 16px;
@@ -577,16 +959,19 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .tab_title {
       width: 20%;
       text-align: center;
       border-right: 1px solid #eeeeee;
       font-size: 16px;
     }
+
     .active1 {
       background: #f1f3f4;
     }
   }
+
   .imei {
     text-align: center;
     font-size: 16px;
@@ -594,9 +979,11 @@ export default {
     font-weight: 600;
     color: #000;
   }
+
   .device {
     margin: 0 6px;
     margin-top: 10px;
+
     .content1 {
       border-radius: 5px;
       float: left;
@@ -605,17 +992,21 @@ export default {
       margin-bottom: 10px;
       background: #3fdd86;
       border: 1px solid #999999;
+
       .content_div {
         padding: 20px 0 30px 10px;
+
         div {
           margin-bottom: 6px;
           font-size: 13px;
         }
+
         .content_sn {
           font-weight: 600;
         }
       }
     }
+
     .active2 {
       background: #ffffff;
     }
@@ -623,8 +1014,6 @@ export default {
     .content2 {
       border-radius: 5px;
       float: left;
-      // width: calc(13.3%);
-      position: relative;
       width: calc(21.3%);
       height: 35px;
       line-height: 35px;
@@ -635,6 +1024,7 @@ export default {
       color: #fff;
       text-align: center;
     }
+
     .lines {
       position: absolute;
       width: calc(100% - 32px) !important;
@@ -644,33 +1034,100 @@ export default {
       height: 1px;
       border-bottom: 1px solid #9a9a9a;
     }
+
     .blank_div {
       text-align: center;
       font-size: 14px;
       margin-top: 20px;
-      font-size: 500;
+      font-weight: 500;
+    }
+
+    // 常用命令样式
+    .command-container {
+      padding: 10px;
+
+      // 自定义命令输入框样式 - 置顶
+      .command-input-section {
+        margin-bottom: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        background: #f9f9f9;
+
+        h3 {
+          margin: 0 0 15px 0;
+          font-size: 16px;
+          color: #333;
+          border-bottom: 1px solid #e0e0e0;
+          padding-bottom: 8px;
+        }
+
+        .command-textarea {
+          margin-bottom: 10px;
+
+          ::v-deep .van-field__body {
+            textarea {
+              font-family: monospace;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .send-command-btn {
+          margin-bottom: 5px;
+        }
+
+        .error-tip {
+          color: #ee0a24;
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+
+      .command-section {
+        margin-bottom: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        background: #f9f9f9;
+
+        h3 {
+          margin: 0 0 15px 0;
+          font-size: 16px;
+          color: #333;
+          border-bottom: 1px solid #e0e0e0;
+          padding-bottom: 8px;
+        }
+
+        .command-buttons {
+          .command-button {
+            margin-bottom: 10px;
+          }
+
+          .command-button:last-child {
+            margin-bottom: 0;
+          }
+
+          .van-field {
+            margin-bottom: 10px;
+          }
+        }
+      }
     }
   }
+
   .wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
   }
+}
 
-  .command-buttons {
-    padding: 20px;
-
-    .wifi-button {
-      margin-bottom: 15px;
-    }
-  }
-
-  /* 确保弹框内容有适当间距 */
-  .van-dialog {
-    .van-field {
-      margin: 15px;
-    }
+/* 弹窗样式调整 */
+.van-dialog {
+  .van-field {
+    margin: 15px;
   }
 }
 </style>

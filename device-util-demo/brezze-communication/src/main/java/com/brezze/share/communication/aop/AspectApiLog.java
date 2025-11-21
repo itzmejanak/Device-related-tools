@@ -180,6 +180,11 @@ public class AspectApiLog {
      * @param request
      */
     private Rest languageConvert(Rest rest, HttpServletRequest request) {
+        // 如果rest为null（void方法），直接返回null
+        if (rest == null) {
+            return null;
+        }
+
         // 获取语言
         String language = request.getHeader(HeaderCst.LANGUAGE);
         // 不是默认英文，则转换语言
