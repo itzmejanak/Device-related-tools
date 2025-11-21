@@ -66,11 +66,11 @@ ENV DB_NAME=db_share
 ENV DB_USERNAME=root
 ENV DB_PASSWORD=123456
 
-# Redis configuration
-ENV REDIS_HOST=redis
-ENV REDIS_PORT=6379
-ENV REDIS_PASSWORD=
-ENV REDIS_DATABASE=3
+# Redis configuration (handled by docker-compose.yml)
+# ENV REDIS_HOST=redis
+# ENV REDIS_PORT=6379
+# ENV REDIS_PASSWORD=
+# ENV REDIS_DATABASE=3
 
 # RabbitMQ configuration
 ENV RABBITMQ_HOST=rabbitmq
