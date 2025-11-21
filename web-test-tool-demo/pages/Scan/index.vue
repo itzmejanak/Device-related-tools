@@ -43,17 +43,33 @@ export default {
     },
     // 解码
     onDecode (result) {
-      // console.log('onDecode', result)
-      let sno = this.global.getSearchString('sno', result) || ''
-      if (!sno) {
-        // 额外判断 result 本身是否符合条件
-        const isNumber = /^\d+$/.test(result) // 纯数字
-        const validLength = result.length === 15 || result.length === 18
+      console.log('扫描结果:', result)
+      let sno = ''
 
+      // 方法1: 从URL参数中获取sno
+      if (result.includes('=')) {
+        sno = result.split('=').pop()
+      }
+      // 方法2: 从URL路径中获取最后一部分
+      else if (result.includes('/')) {
+        sno = result.split('/').pop()
+      }
+      // 方法3: 直接判断是否为15或18位纯数字
+      else {
+        const isNumber = /^\d+$/.test(result)
+        const validLength = result.length === 15 || result.length === 18
         if (isNumber && validLength) {
           sno = result
         }
       }
+
+      // 清理可能的额外参数（如?号后的内容）
+      if (sno.includes('?')) {
+        sno = sno.split('?')[0]
+      }
+
+      console.log('提取的sno:', sno)
+
       if (sno) {
         this.$router.push({
           name: 'Setting',
