@@ -93,7 +93,7 @@ services:
       RABBITMQ_VHOST: /
       
       # EMQX MQTT Configuration
-      MQTT_BROKER: ${MQTT_BROKER:-nf0e7f22.ala.dedicated.aws.emqxcloud.com}
+      MQTT_BROKER: ${MQTT_BROKER:-ub0bc614.ala.dedicated.aws.emqxcloud.com}
       MQTT_PORT: ${MQTT_PORT:-1883}
       MQTT_USERNAME: ${MQTT_USERNAME:-chargeghar}
       MQTT_PASSWORD: ${MQTT_PASSWORD:-5060}
@@ -101,9 +101,9 @@ services:
       MQTT_SSL: ${MQTT_SSL:-false}
       
       # EMQX Management API Configuration
-      EMQX_API_URL: ${EMQX_API_URL:-https://nf0e7f22.ala.dedicated.aws.emqxcloud.com:8443/api/v5}
-      EMQX_API_KEY: ${EMQX_API_KEY:-o138f3b1feb110b0}
-      EMQX_API_SECRET: ${EMQX_API_SECRET:-IDwov-pD9dqQcC9sHlsHAXj!cwGdi.wZ}
+      EMQX_API_URL: ${EMQX_API_URL:-https://ub0bc614.ala.dedicated.aws.emqxcloud.com:8443/api/v5}
+      EMQX_API_KEY: ${EMQX_API_KEY:-c2228527c6b07ddd}
+      EMQX_API_SECRET: ${EMQX_API_SECRET:-A5Mg-eO4zR8KYtOi1D9o54qR-NmWjbFH}
       
       # Product Key and Topic Configuration
       PRODUCT_KEY: ${PRODUCT_KEY:-powerbank}

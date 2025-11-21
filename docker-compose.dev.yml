@@ -1,0 +1,23 @@
+# Development Docker Compose with Hot Reload
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./device-util-demo
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Mount source code for hot reload
+      - ./device-util-demo/brezze-communication/src:/app/brezze-communication/src
+      - ./device-util-demo/utils-common/src:/app/utils-common/src
+      # Maven cache to speed up builds
+      - maven_cache:/root/.m2
+    environment:
+      # Enable Spring Boot DevTools
+      SPRING_DEVTOOLS_RESTART_ENABLED: "true"
+      SPRING_DEVTOOLS_LIVERELOAD_ENABLED: "true"
+
+volumes:
+  maven_cache:

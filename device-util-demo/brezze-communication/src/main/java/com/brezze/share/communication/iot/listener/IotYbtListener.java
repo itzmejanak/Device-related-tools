@@ -7,6 +7,7 @@ import com.brezze.share.utils.common.constant.TimeCst;
 import com.brezze.share.utils.common.json.GsonUtil;
 import com.brezze.share.utils.common.oo.ybt.message.*;
 import com.brezze.share.utils.common.oo.ybt.serialport.SerialPortData;
+import com.brezze.share.utils.common.oo.ybt.serialport.SerialPortException;
 import com.brezze.share.utils.common.redis.RedisUtil;
 import com.brezze.share.utils.common.string.ByteUtils;
 import com.brezze.share.utils.common.thread.ThreadPoolUtil;
@@ -53,6 +54,7 @@ public class IotYbtListener implements MessageListener {
                         + "\n   messageId = " + messageId
                         + "\n   content = " + content);
                 log.info("\n--------------------->YBT机柜-[],设备状态: {}", GsonUtil.toJson(content));
+
             } else {
                 content = ByteUtils.to16Hexs(body);
                 log.info("\nreceive message: "
@@ -229,5 +231,16 @@ public class IotYbtListener implements MessageListener {
             return "";
         }
         return arr[2];
+    }
+
+
+    public static void main(String[] args) throws SerialPortException {
+//        0xa800c510100000003a3a010000000000000000ffff00000080020000000000000000ffff00000080030000000000000000ffff00000080040000000000000000ffff00000080050000000000000000ffff00000080060000000000000000ffff00000080600000003a3a1f0000000000000000ffff00000080200000000000000000ffff00000080210000000000000000ffff00000080220000000000000000ffff00000080230000000000000000ffff00000080240000000000000000ffff0000008065
+        String hexStr = "A8 00 38 10 10 03 00 00 03 FF 01 00 00 00 00 00 00 00 00 FF FF 00 00 00 80 02 00 00 00 00 00 00 00 00 FF FF 00 00 00 80 03 00 00 00 00 00 00 00 00 FF FF 00 00 00 80 7B";
+//        byte[] body = new byte[]{-88, 0, -59, 16, 16, 0, 0, 0, 58, 58, 1, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 2, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 3, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 4, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 5, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 6, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 96, 0, 0, 0, 58, 58, 31, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 32, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 33, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 34, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 35, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 36, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, -128, 101};
+        byte[] body = ByteUtils.toBytes(hexStr);
+        System.out.println(ByteUtils.to16Hexs(body));
+        ReceiveUpload receiveUpload = new ReceiveUpload(body);
+        System.out.println(GsonUtil.toJson(receiveUpload));
     }
 }

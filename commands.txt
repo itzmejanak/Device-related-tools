@@ -24,3 +24,13 @@ sudo systemctl reload nginx
 
 # Get SSL certificate
 sudo certbot --nginx -d powerbank-api.chargeghar.com --non-interactive --agree-tos --email admin@chargeghar.com
+
+
+# Use development compose file
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d backend
+
+# Now code changes auto-reload in ~10-30 seconds!
+
+
+docker compose up -d --no-deps --build backend
+

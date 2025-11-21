@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
@@ -18,7 +17,6 @@ import java.time.LocalDateTime;
  * @Description
  * @Date 2020/03/30 14:50
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Accessors(chain = true)
 public class BaseEntity<T> extends Model<BaseEntity<T>> {

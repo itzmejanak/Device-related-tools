@@ -164,7 +164,7 @@ public class AspectApiLog {
             }
         }
 
-        if (argsList.isEmpty()) {
+        if (argsList.size() == 0) {
             return "";
         } else if (argsList.size() == 1) {
             return GsonUtil.toJson(argsList.get(0));

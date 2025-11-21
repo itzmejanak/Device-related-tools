@@ -5,29 +5,27 @@ import com.brezze.share.communication.cabinet.service.YbtService;
 import com.brezze.share.communication.oo.dto.ConnectTokenDTO;
 import com.brezze.share.communication.oo.dto.RentDTO;
 import com.brezze.share.utils.common.result.Rest;
+
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("")
 public class UserController {
 
-    @Autowired
+    @Resource
     private YbtService ybtService;
-    @Autowired
+    @Resource
     private OrderService orderService;
 
     @ApiOperationSupport(order = 25)
-    @ApiOperation(httpMethod = "GET", value = "Obtain the Stripe terminal connection key", notes = "")
+    @ApiOperation(httpMethod = "GET", value = "获取stripe终端连接秘钥", notes = "")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "locationId", value = "locationId", dataType = "String", required = false, paramType = "query"),
     })
@@ -44,11 +42,11 @@ public class UserController {
     }
 
     @ApiOperationSupport(order = 26)
-    @ApiOperation(httpMethod = "GET", value = "Receive authorized payments message", notes = "")
+    @ApiOperation(httpMethod = "GET", value = "接收已授权的支付", notes = "")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "paymentIntentId", value = "payment Intent Id", dataType = "string", required = true, paramType = "query"),
-            @ApiImplicitParam(name = "paymentMethod", value = "payment Method ID", dataType = "string", required = true, paramType = "query"),
-            @ApiImplicitParam(name = "cabinetNo", value = "station sn or imei", dataType = "string", required = true, paramType = "query"),
+            @ApiImplicitParam(name = "paymentIntentId", value = "支付意图ID", dataType = "string", required = true, paramType = "query"),
+            @ApiImplicitParam(name = "paymentMethod", value = "支付方式ID", dataType = "string", required = true, paramType = "query"),
+            @ApiImplicitParam(name = "cabinetNo", value = "机柜扫码编号", dataType = "string", required = true, paramType = "query"),
     })
     @GetMapping("/api/users/payment/captured")
     public Rest<RentDTO> capturedPayment(HttpServletRequest request,

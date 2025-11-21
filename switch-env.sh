@@ -94,6 +94,20 @@ YBT_UID=test_uid
 YBT_REGION_ID=cn-shanghai
 YBT_PRODUCT_KEY=test_product
 YBT_CONSUMER_GROUP_ID=test_group
+# EMQX MQTT Configuration
+MQTT_BROKER=ub0bc614.ala.dedicated.aws.emqxcloud.com
+MQTT_PORT=1883
+MQTT_USERNAME=chargeghar
+MQTT_PASSWORD=5060
+MQTT_CLIENT_ID=iotdemo-server-local
+MQTT_SSL=false
+# EMQX Management API Configuration
+EMQX_API_URL=https://ub0bc614.ala.dedicated.aws.emqxcloud.com:8443/api/v5
+EMQX_API_KEY=c2228527c6b07ddd
+EMQX_API_SECRET=A5Mg-eO4zR8KYtOi1D9o54qR-NmWjbFH
+# Product Key and Topic Configuration
+PRODUCT_KEY=powerbank
+TOPIC_TYPE=true
 BACKEND_URL=http://localhost:10030
 CABINET_BIND_URL=http://localhost:8084
 TEST_TOOL_URL=http://localhost:8083
@@ -134,6 +148,20 @@ YBT_UID=your_production_ybt_uid
 YBT_REGION_ID=cn-shanghai
 YBT_PRODUCT_KEY=your_production_ybt_product_key
 YBT_CONSUMER_GROUP_ID=your_production_consumer_group_id
+# EMQX MQTT Configuration
+MQTT_BROKER=ub0bc614.ala.dedicated.aws.emqxcloud.com
+MQTT_PORT=1883
+MQTT_USERNAME=chargeghar
+MQTT_PASSWORD=5060
+MQTT_CLIENT_ID=iotdemo-server
+MQTT_SSL=false
+# EMQX Management API Configuration
+EMQX_API_URL=https://ub0bc614.ala.dedicated.aws.emqxcloud.com:8443/api/v5
+EMQX_API_KEY=c2228527c6b07ddd
+EMQX_API_SECRET=A5Mg-eO4zR8KYtOi1D9o54qR-NmWjbFH
+# Product Key and Topic Configuration
+PRODUCT_KEY=powerbank
+TOPIC_TYPE=true
 BACKEND_URL=https://powerbank-api.chargeghar.com
 CABINET_BIND_URL=https://powerbank-api.chargeghar.com/binding
 TEST_TOOL_URL=https://powerbank-api.chargeghar.com/test
